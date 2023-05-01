@@ -11,7 +11,7 @@ const seniorDeveloper = {
     leadershipExperience: 1,
     level: 'junior',
 };
-// NOTE: Using enum is not recommended
+// NOTE: Using enum is NOT RECOMMENDED
 var Level;
 (function (Level) {
     Level[Level["junior"] = 0] = "junior";

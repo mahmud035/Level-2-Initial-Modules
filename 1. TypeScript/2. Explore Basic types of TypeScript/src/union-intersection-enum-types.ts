@@ -33,7 +33,7 @@ const seniorDeveloper: NextLevelDeveloper = {
   level: 'junior',
 };
 
-// NOTE: Using enum is not recommended
+// NOTE: Using enum is NOT RECOMMENDED
 enum Level {
   junior,
   mid,
