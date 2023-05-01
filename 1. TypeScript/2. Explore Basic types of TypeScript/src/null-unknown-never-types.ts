@@ -32,10 +32,9 @@ getMyCarSpeed(10);
 getMyCarSpeed('10 km/h'); // string
 
 //* never type
-
 function throwError(message: string): never {
   throw new Error(message);
 }
 
+// throwError('Bhai bhai error hoyeche, kandi dimu');
 // throwError('Error is mortal');
-throwError('Bhai bhai error hoyeche, kandi dimu');
