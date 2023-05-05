@@ -2,7 +2,7 @@
 /**
  * NOTE: type use korbo primitive type data er jonno(Ex: string, number, boolean, bigInt, symbol etc)
  *
- * NOTE: interface use korbo object type data er jonno(Ex: object, array, function)
+ * NOTE: interface use korbo object type data er jonno(Ex: object, class)
  *  */
 const userWithTypeAlias = {
     name: 'Type Alias',
