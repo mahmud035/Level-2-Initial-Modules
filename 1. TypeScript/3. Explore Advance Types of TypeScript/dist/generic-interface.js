@@ -1,4 +1,9 @@
 "use strict";
+/**
+ * Generic in Interface
+ *
+ * NOTE: ekta "interface" define korbo jar moddhe kichu property er type thakbe 'fixed' abong kichu property er type thakbe 'DYNAMIC'
+ *  */
 const crush1 = {
     name: 'Kate',
     husband: true,

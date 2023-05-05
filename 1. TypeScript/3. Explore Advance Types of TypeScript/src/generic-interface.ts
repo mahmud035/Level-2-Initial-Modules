@@ -1,3 +1,9 @@
+/**
+ * Generic in Interface
+ *
+ * NOTE: ekta "interface" define korbo jar moddhe kichu property er type thakbe 'fixed' abong kichu property er type thakbe 'DYNAMIC'
+ *  */
+
 // Ex: 1 (generic interface)
 interface CrushInterface<T, U = null> {
   name: string;
