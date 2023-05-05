@@ -17,12 +17,16 @@ const userNameAndRollNumbers: GenericArray<NameRollType> = [
 // Ex: 2 (generic tuple)
 type GenericTuple<X, Y> = [X, Y];
 
-type relationWithSalaryType = { name: string; salary: number };
+type RelationWithSalaryType = { name: string; salary: number };
+interface RelationWithSalaryInterface {
+  name: string;
+  salary: number;
+}
 
 const relation: GenericTuple<string, string> = ['John', 'Kate'];
 console.log(relation);
 
-const relationWithSalary: GenericTuple<relationWithSalaryType, string> = [
+const relationWithSalary: GenericTuple<RelationWithSalaryInterface, string> = [
   {
     name: 'John',
     salary: 100000,
@@ -31,7 +35,7 @@ const relationWithSalary: GenericTuple<relationWithSalaryType, string> = [
 ];
 console.log(relationWithSalary);
 
-const relationWithSalary2: GenericTuple<relationWithSalaryType, string> = [
+const relationWithSalary2: GenericTuple<RelationWithSalaryInterface, string> = [
   {
     name: 'John',
     salary: 100000,
