@@ -1,4 +1,5 @@
 class Animal {
+  // parameter properties
   constructor(
     public name: string,
     public species: string,
@@ -13,5 +14,5 @@ class Animal {
 const dog = new Animal('German Shepherd', 'dog', 'Ghew Ghew');
 const cat = new Animal('Persian', 'cat', 'meaw meaw');
 
-console.log(dog.makeSound());
-console.log(cat.makeSound());
+dog.makeSound();
+cat.makeSound();
