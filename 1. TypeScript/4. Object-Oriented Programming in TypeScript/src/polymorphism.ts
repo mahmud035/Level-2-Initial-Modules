@@ -1,4 +1,5 @@
 //  Ex: 1
+
 //* Parent Class
 class Person2 {
   takeNap(): void {
@@ -35,6 +36,7 @@ getNap(person2);
 getNap(person3);
 
 // Ex: 2
+
 //* Parent Class
 class Shape {
   getArea(): number {
