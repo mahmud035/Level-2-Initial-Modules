@@ -1,11 +1,24 @@
 "use strict";
+// const add = (param1: number, param2: number): number => {
+//   return param1 + param2;
+// };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.subtract = exports.add = void 0;
-const add = (param1, param2) => {
-    return param1 + param2;
+// const subtract = (param1: number, param2: number): number => {
+//   return param1 - param2;
+// };
+// const multiply = (param1: number, param2: number): number => {
+//   return param1 * param2;
+// };
+// const divide = (param1: number, param2: number): number => {
+//   return param1 / param2;
+// };
+const average = (param1, param2) => {
+    return (param1 + param2) / 2;
 };
-exports.add = add;
-const subtract = (param1, param2) => {
-    return param1 - param2;
+exports.default = {
+    // add,
+    // subtract,
+    // multiply,
+    // divide,
+    average,
 };
-exports.subtract = subtract;
