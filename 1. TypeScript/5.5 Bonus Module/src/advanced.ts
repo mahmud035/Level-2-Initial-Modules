@@ -14,6 +14,7 @@ interface IMethods {
   fullName(): string;
 }
 
+// Combine two interface
 type model = Model<IUser, IMethods>;
 
 class User implements model {
