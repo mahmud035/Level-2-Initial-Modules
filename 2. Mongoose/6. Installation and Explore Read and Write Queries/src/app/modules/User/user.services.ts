@@ -1,24 +1,14 @@
+import { IUser } from './user.interface';
 import { User } from './user.model';
 
-// Step4: Database Query On Model
-export const createUserToDB = async () => {
-  const user = new User({
-    id: '888',
-    role: 'student',
-    password: '123abc',
-    name: {
-      firstName: 'John',
-      lastName: 'Doe',
-    },
-    dateOfBirth: 'March 1990',
-    email: 'john@gmail.com',
-    contactNo: '019999999',
-    emergencyContactNo: '017777',
-    presentAddress: 'Gopalganj',
-    permanentAddress: 'Grave',
-  });
+export const getUsersFromDB = async (): Promise<IUser[]> => {
+  const users = await User.find();
+  return users;
+};
 
-  await user.save();
+export const createUserToDB = async (payload: IUser): Promise<IUser> => {
+  const user = new User(payload);
 
-  return user;
+  await user.save(); // save user to database
+  return user; // return the user
 };

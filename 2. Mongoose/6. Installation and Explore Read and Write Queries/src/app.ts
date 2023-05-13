@@ -19,11 +19,11 @@ export default app;
  * 1. interface --> user.interface.ts
  * 2. schema & model --> user.model.ts
  * 3. route  --> user.route.ts
- * 4. middleware function --> user.controller.ts
+ * 4. handle request, response --> user.controller.ts
  * 5. database query function --> user.services.ts
  * 
  * IMP: 
- * route will controller --> controller will call service
+ * route will call controller --> controller will call service
  ** route.ts --> controller.ts --> services.ts
 
  * */
