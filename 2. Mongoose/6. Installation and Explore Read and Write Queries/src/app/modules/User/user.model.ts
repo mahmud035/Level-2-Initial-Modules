@@ -21,4 +21,4 @@ const userSchema = new Schema<IUser>({
 });
 
 // Step3: Create a Model
-const User = model<IUser>('User', userSchema);
+export const User = model<IUser>('User', userSchema);
