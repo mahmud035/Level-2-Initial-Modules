@@ -12,13 +12,22 @@ export const getUserByIdFromDB = async (
   const user = await User.findOne(
     { id: payload },
     { name: 1, email: 1, contactNo: 1 }
+    // Field Filtering: find specific properties
   );
   return user;
 };
 
+// export const getAdminUsersFromDB = async (): Promise<IUser | null> => {
+//   const user1 = new User() // static User
+// };
+
 export const createUserToDB = async (payload: IUser): Promise<IUser> => {
+  // creating a new user from User model
   const user = new User(payload);
 
   await user.save(); // save user to database
   return user; // return the user
 };
+
+// console.log(user.fullName()); // Here, fullName() is custom instance methods
+// user.save(); // Here save() is a built-in instance method

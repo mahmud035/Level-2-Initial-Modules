@@ -1,3 +1,5 @@
+import { Model } from 'mongoose';
+
 // Step1: Create an Interface
 export interface IUser {
   id: string;
@@ -15,4 +17,9 @@ export interface IUser {
   emergencyContactNo: string;
   presentAddress: string;
   permanentAddress: string;
+}
+
+// interface for custom instance method
+export interface IUserMethods {
+  fullName(): string;
 }
