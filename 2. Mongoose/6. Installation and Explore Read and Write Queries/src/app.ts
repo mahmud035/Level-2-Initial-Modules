@@ -59,7 +59,7 @@ app.post('/', (req: Request, res: Response, next: NextFunction) => {
   // Step3: Create a Model
   const User = model<IUser>('User', userSchema);
 
-  // Step4: Database Query on Model
+  // Step4: Database Query On Model
   const createUser = async () => {
     const user = new User({
       id: '444',
