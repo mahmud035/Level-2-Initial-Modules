@@ -62,7 +62,7 @@ app.post('/', (req: Request, res: Response, next: NextFunction) => {
   // Step4: Database Query on Model
   const createUser = async () => {
     const user = new User({
-      id: '111',
+      id: '444',
       role: 'student',
       password: '123abc',
       name: {
@@ -81,6 +81,11 @@ app.post('/', (req: Request, res: Response, next: NextFunction) => {
   };
 
   createUser();
+
+  res.send({
+    success: true,
+    message: 'User added to database',
+  });
 });
 
 export default app;
