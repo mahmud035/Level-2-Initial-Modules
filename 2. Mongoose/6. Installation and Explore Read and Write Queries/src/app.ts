@@ -18,46 +18,46 @@ app.post('/', (req: Request, res: Response, next: NextFunction) => {
    * Step4: Connect to MongoDB (Database Query)
    * */
 
-  // Step1: Create an Interface
-  interface IUser {
-    id: string;
-    role: 'student';
-    password: string;
-    name: {
-      firstName: string;
-      middleName?: string;
-      lastName: string;
-    };
-    dateOfBirth?: string;
-    gender: 'male' | 'female';
-    email?: string;
-    contactNo: string;
-    emergencyContactNo: string;
-    presentAddress: string;
-    permanentAddress: string;
-  }
+  // // Step1: Create an Interface
+  // interface IUser {
+  //   id: string;
+  //   role: 'student';
+  //   password: string;
+  //   name: {
+  //     firstName: string;
+  //     middleName?: string;
+  //     lastName: string;
+  //   };
+  //   dateOfBirth?: string;
+  //   gender: 'male' | 'female';
+  //   email?: string;
+  //   contactNo: string;
+  //   emergencyContactNo: string;
+  //   presentAddress: string;
+  //   permanentAddress: string;
+  // }
 
-  // Step2: Create a Schema Using The Interface
-  const userSchema = new Schema<IUser>({
-    id: { type: String, required: true, unique: true },
-    role: { type: String, required: true },
-    password: { type: String, required: true },
-    name: {
-      firstName: { type: String, required: true },
-      middleName: { type: String },
-      lastName: { type: String, required: true },
-    },
-    dateOfBirth: { type: String },
-    gender: { type: String, enum: ['male', 'female'] },
-    email: { type: String },
-    contactNo: { type: String, required: true },
-    emergencyContactNo: { type: String, required: true },
-    presentAddress: { type: String, required: true },
-    permanentAddress: { type: String, required: true },
-  });
+  // // Step2: Create a Schema Using The Interface
+  // const userSchema = new Schema<IUser>({
+  //   id: { type: String, required: true, unique: true },
+  //   role: { type: String, required: true },
+  //   password: { type: String, required: true },
+  //   name: {
+  //     firstName: { type: String, required: true },
+  //     middleName: { type: String },
+  //     lastName: { type: String, required: true },
+  //   },
+  //   dateOfBirth: { type: String },
+  //   gender: { type: String, enum: ['male', 'female'] },
+  //   email: { type: String },
+  //   contactNo: { type: String, required: true },
+  //   emergencyContactNo: { type: String, required: true },
+  //   presentAddress: { type: String, required: true },
+  //   permanentAddress: { type: String, required: true },
+  // });
 
-  // Step3: Create a Model
-  const User = model<IUser>('User', userSchema);
+  // // Step3: Create a Model
+  // const User = model<IUser>('User', userSchema);
 
   // Step4: Database Query On Model
   const createUser = async () => {
@@ -89,3 +89,11 @@ app.post('/', (req: Request, res: Response, next: NextFunction) => {
 });
 
 export default app;
+
+/**
+ * NOTE: Breakdown Process:
+ *
+ * 1. interface --> user.interface.ts
+ * 2. schema & model --> user.model.ts
+ * 3.
+ * */
