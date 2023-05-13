@@ -1,8 +1,8 @@
 import { Model, Schema, model } from 'mongoose';
-import { IUser, IUserMethods } from './user.interface';
+import { IUser, IUserMethods, UserModel } from './user.interface';
 
 // create a new Model type that knows about IUserMethods
-type UserModel = Model<IUser, {}, IUserMethods>;
+// type UserModel = Model<IUser, {}, IUserMethods>;
 
 // Step2: Create a Schema Using The Interface
 const userSchema = new Schema<IUser, UserModel, IUserMethods>({
@@ -21,6 +21,11 @@ const userSchema = new Schema<IUser, UserModel, IUserMethods>({
   emergencyContactNo: { type: String, required: true },
   presentAddress: { type: String, required: true },
   permanentAddress: { type: String, required: true },
+});
+
+userSchema.static('getAdminUsers', async function getAdminUsers() {
+  const admins = await this.find({ role: 'admin' });
+  return admins;
 });
 
 userSchema.method('fullName', function fullName() {

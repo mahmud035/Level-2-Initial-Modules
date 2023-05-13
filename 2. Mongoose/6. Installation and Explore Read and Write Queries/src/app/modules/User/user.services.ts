@@ -17,9 +17,10 @@ export const getUserByIdFromDB = async (
   return user;
 };
 
-// export const getAdminUsersFromDB = async (): Promise<IUser | null> => {
-//   const user1 = new User() // static User
-// };
+export const getAdminUsersFromDB = async () => {
+  const admins = await User.getAdminUsers();
+  return admins;
+};
 
 export const createUserToDB = async (payload: IUser): Promise<IUser> => {
   // creating a new user from User model
