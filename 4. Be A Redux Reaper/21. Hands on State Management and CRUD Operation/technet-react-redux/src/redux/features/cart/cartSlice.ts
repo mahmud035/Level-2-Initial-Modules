@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
 import { IProduct } from '@/types/globalTypes';
 import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
@@ -15,7 +16,19 @@ const cartSlice = createSlice({
   initialState,
   reducers: {
     addToCart: (state, action: PayloadAction<IProduct>) => {
-      state.products.push(action.payload);
+      //* Check if the product has already been added
+      const existingProduct = state.products.find(
+        (product) => product._id === action.payload._id
+      );
+
+      if (existingProduct) {
+        existingProduct.quantity = existingProduct.quantity! + 1;
+      } else {
+        action.payload.quantity = 1;
+        state.products.push(action.payload);
+        // same work
+        // state.products.push({ ...action.payload, quantity: 1 });
+      }
     },
   },
 });
