@@ -22,14 +22,8 @@ import {
 } from '@/redux/features/cart/cartSlice';
 
 export default function Cart() {
-  const { products } = useAppSelector((state) => state.cart);
+  const { products, total } = useAppSelector((state) => state.cart);
   const dispatch = useAppDispatch();
-
-  //! Dummy data
-
-  const total = 0;
-
-  //! **
 
   return (
     <Sheet>
@@ -40,8 +34,8 @@ export default function Cart() {
       </SheetTrigger>
       <SheetContent className="overflow-auto relative">
         <SheetHeader>
-          <SheetTitle>Cart</SheetTitle>
-          <h1>Total: {total.toFixed(2)}</h1>
+          <SheetTitle className="text-2xl">Cart</SheetTitle>
+          <h1 className="font-medium text-xl">Total: {total.toFixed(2)}</h1>
         </SheetHeader>
         <div className="space-y-5">
           {products.map((product: IProduct) => (
