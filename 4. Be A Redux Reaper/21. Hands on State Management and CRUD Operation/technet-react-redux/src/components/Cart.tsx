@@ -14,10 +14,16 @@ import {
   SheetTitle,
   SheetTrigger,
 } from './ui/sheet';
-import { useAppSelector } from '@/redux/hooks';
+import { useAppDispatch, useAppSelector } from '@/redux/hooks';
+import {
+  decreaseProductQuantity,
+  removeFromCart,
+  addToCart,
+} from '@/redux/features/cart/cartSlice';
 
 export default function Cart() {
   const { products } = useAppSelector((state) => state.cart);
+  const dispatch = useAppDispatch();
 
   //! Dummy data
 
@@ -38,7 +44,7 @@ export default function Cart() {
           <h1>Total: {total.toFixed(2)}</h1>
         </SheetHeader>
         <div className="space-y-5">
-          {products.map((product) => (
+          {products.map((product: IProduct) => (
             <div
               className="border h-44 p-5 flex justify-between rounded-md"
               key={product.name}
@@ -55,13 +61,16 @@ export default function Cart() {
                 </p>
               </div>
               <div className="border-l pl-5 flex flex-col justify-between">
-                <Button>
+                <Button onClick={() => dispatch(addToCart(product))}>
                   <HiOutlinePlus size="20" />
                 </Button>
-                <Button>
+                <Button
+                  onClick={() => dispatch(decreaseProductQuantity(product))}
+                >
                   <HiMinus size="20" />
                 </Button>
                 <Button
+                  onClick={() => dispatch(removeFromCart(product))}
                   variant="destructive"
                   className="bg-red-500 hover:bg-red-400"
                 >
