@@ -18,6 +18,7 @@ import { useAppDispatch, useAppSelector } from '@/redux/hooks';
 import {
   addToCart,
   decreaseProductQuantity,
+  removeFromCart,
 } from '@/redux/features/cart/cartSlice';
 
 export default function Cart() {
@@ -68,6 +69,7 @@ export default function Cart() {
                   <HiMinus size="20" />
                 </Button>
                 <Button
+                  onClick={() => dispatch(removeFromCart(product))}
                   variant="destructive"
                   className="bg-red-500 hover:bg-red-400"
                 >
