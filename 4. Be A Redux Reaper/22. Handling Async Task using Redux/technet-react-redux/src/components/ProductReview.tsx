@@ -4,10 +4,11 @@ import { FiSend } from 'react-icons/fi';
 import { Avatar, AvatarFallback, AvatarImage } from './ui/avatar';
 import { Button } from './ui/button';
 import { Textarea } from './ui/textarea';
+import {} from '@/redux/api/apiSlice';
 import {
   useGetCommentQuery,
   usePostCommentMutation,
-} from '@/redux/api/apiSlice';
+} from '@/redux/features/products/productApi';
 
 interface IProps {
   id: string;
@@ -15,9 +16,16 @@ interface IProps {
 
 export default function ProductReview({ id }: IProps) {
   const [inputValue, setInputValue] = useState<string>('');
+
+  // NOTE: Mutation
   const [postComment, { isLoading, isError, isSuccess }] =
     usePostCommentMutation();
-  const { data } = useGetCommentQuery(id);
+
+  // NOTE: Query
+  const { data } = useGetCommentQuery(id, {
+    refetchOnMountOrArgChange: true,
+    pollingInterval: 30000, // 30 seconds
+  });
 
   console.log(isLoading);
   console.log(isError);
@@ -33,6 +41,7 @@ export default function ProductReview({ id }: IProps) {
         comment: inputValue,
       },
     };
+    //* call mutation hook
     postComment(options);
 
     setInputValue('');
