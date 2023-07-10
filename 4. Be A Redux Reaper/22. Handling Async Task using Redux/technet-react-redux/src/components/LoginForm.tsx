@@ -2,12 +2,14 @@
 
 import * as React from 'react';
 
-import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
+import { cn } from '@/lib/utils';
+import { useAppDispatch } from '@/redux/hook';
 import { useForm } from 'react-hook-form';
 import { FcGoogle } from 'react-icons/fc';
+import { loginUser } from '@/redux/features/user/userSlice';
 
 type UserAuthFormProps = React.HTMLAttributes<HTMLDivElement>;
 
@@ -23,8 +25,13 @@ export function LoginForm({ className, ...props }: UserAuthFormProps) {
     formState: { errors },
   } = useForm<LoginFormInputs>();
 
+  const dispatch = useAppDispatch();
+
   const onSubmit = (data: LoginFormInputs) => {
     console.log(data);
+
+    // IMPORTANT: MUST dispatch korte hobe
+    dispatch(loginUser({ email: data.email, password: data.password }));
   };
 
   return (
