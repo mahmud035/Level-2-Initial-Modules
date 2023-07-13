@@ -4,7 +4,6 @@ import { FiSend } from 'react-icons/fi';
 import { Avatar, AvatarFallback, AvatarImage } from './ui/avatar';
 import { Button } from './ui/button';
 import { Textarea } from './ui/textarea';
-import {} from '@/redux/api/apiSlice';
 import {
   useGetCommentQuery,
   usePostCommentMutation,
@@ -35,6 +34,7 @@ export default function ProductReview({ id }: IProps) {
     event.preventDefault();
     console.log(inputValue);
 
+    // WARNING: Back-end theke jevabe data ta receive korbe, Front-end theke amake sei-vabe-e data k pathate hobe. Otherwise, backend theke data pabe na.
     const options = {
       id: id,
       data: {

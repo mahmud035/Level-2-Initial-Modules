@@ -17,6 +17,8 @@ import { useAppSelector } from '@/redux/hook';
 export default function Navbar() {
   const { user } = useAppSelector((state) => state.user);
 
+  // const handleLogout = () => {};
+
   return (
     <nav className="w-full h-16 fixed top backdrop-blur-lg z-10">
       <div className="h-full w-full bg-white/60">
@@ -65,6 +67,7 @@ export default function Navbar() {
                     <DropdownMenuItem className="cursor-pointer">
                       Profile
                     </DropdownMenuItem>
+
                     {!user.email && (
                       <>
                         <Link to="/login">
@@ -81,7 +84,7 @@ export default function Navbar() {
                     )}
 
                     {user.email && (
-                      <Link to="/logout" onClick={handleLogout}>
+                      <Link to="/logout">
                         <DropdownMenuItem className="cursor-pointer">
                           Logout
                         </DropdownMenuItem>
