@@ -1,7 +1,5 @@
 'use client';
 
-import * as React from 'react';
-
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
@@ -9,7 +7,9 @@ import { cn } from '@/lib/utils';
 import { useForm } from 'react-hook-form';
 import { FcGoogle } from 'react-icons/fc';
 import { createUser } from '@/redux/features/user/userSlice';
-import { useAppDispatch } from '@/redux/hook';
+import { useAppDispatch, useAppSelector } from '@/redux/hook';
+import { useNavigate } from 'react-router-dom';
+import { useEffect } from 'react';
 
 type UserAuthFormProps = React.HTMLAttributes<HTMLDivElement>;
 
@@ -25,7 +25,10 @@ export function SignupForm({ className, ...props }: UserAuthFormProps) {
     formState: { errors },
   } = useForm<SignupFormInputs>();
 
+  const { user, isLoading } = useAppSelector((state) => state.user);
   const dispatch = useAppDispatch();
+
+  const navigate = useNavigate();
 
   const onSubmit = (data: SignupFormInputs) => {
     console.log(data);
@@ -33,6 +36,12 @@ export function SignupForm({ className, ...props }: UserAuthFormProps) {
     // IMPORTANT: MUST dispatch korte hobe
     dispatch(createUser({ email: data.email, password: data.password }));
   };
+
+  useEffect(() => {
+    if (user.email && !isLoading) {
+      navigate('/');
+    }
+  }, [user.email, isLoading, navigate]);
 
   return (
     <div className={cn('grid gap-6', className)} {...props}>

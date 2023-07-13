@@ -12,12 +12,21 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '../components/ui/dropdown-menu';
-import { useAppSelector } from '@/redux/hook';
+import { useAppDispatch, useAppSelector } from '@/redux/hook';
+import { signOut } from 'firebase/auth';
+import { auth } from '@/lib/firebase';
+import { setUser } from '@/redux/features/user/userSlice';
 
 export default function Navbar() {
   const { user } = useAppSelector((state) => state.user);
 
-  // const handleLogout = () => {};
+  const dispatch = useAppDispatch();
+
+  const handleLogout = () => {
+    signOut(auth).then(() => {
+      dispatch(setUser(null));
+    });
+  };
 
   return (
     <nav className="w-full h-16 fixed top backdrop-blur-lg z-10">
@@ -77,18 +86,19 @@ export default function Navbar() {
                         </Link>
                         <Link to="/signup">
                           <DropdownMenuItem className="cursor-pointer">
-                            signup
+                            Signup
                           </DropdownMenuItem>
                         </Link>
                       </>
                     )}
 
                     {user.email && (
-                      <Link to="/logout">
-                        <DropdownMenuItem className="cursor-pointer">
-                          Logout
-                        </DropdownMenuItem>
-                      </Link>
+                      <DropdownMenuItem
+                        onClick={handleLogout}
+                        className="cursor-pointer"
+                      >
+                        Logout
+                      </DropdownMenuItem>
                     )}
                   </DropdownMenuContent>
                 </DropdownMenu>
