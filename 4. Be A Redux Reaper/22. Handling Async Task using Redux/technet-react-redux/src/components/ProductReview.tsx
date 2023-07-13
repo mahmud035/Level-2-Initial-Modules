@@ -1,13 +1,13 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
+import {
+  useGetCommentQuery,
+  usePostCommentMutation,
+} from '@/redux/features/products/productApi';
 import { ChangeEvent, FormEvent, useState } from 'react';
 import { FiSend } from 'react-icons/fi';
 import { Avatar, AvatarFallback, AvatarImage } from './ui/avatar';
 import { Button } from './ui/button';
 import { Textarea } from './ui/textarea';
-import {
-  useGetCommentQuery,
-  usePostCommentMutation,
-} from '@/redux/features/products/productApi';
 
 interface IProps {
   id: string;
@@ -25,6 +25,8 @@ export default function ProductReview({ id }: IProps) {
     refetchOnMountOrArgChange: true,
     pollingInterval: 30000, // 30 seconds
   });
+
+  console.log(data);
 
   console.log(isLoading);
   console.log(isError);
@@ -68,7 +70,7 @@ export default function ProductReview({ id }: IProps) {
         </Button>
       </form>
       <div className="mt-10">
-        {data?.comments?.map((comment: string, index: number) => (
+        {data?.map((comment: string, index: number) => (
           <div key={index} className="flex gap-3 items-center mb-5">
             <Avatar>
               <AvatarImage src="https://github.com/shadcn.png" />
