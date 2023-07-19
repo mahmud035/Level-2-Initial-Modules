@@ -2,12 +2,11 @@ import { Button } from 'antd';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import React from 'react';
 
 const ErrorPage = () => {
   const router = useRouter();
 
-  // NOTE: Dynamically navigate to home page
+  // NOTE: Dynamically navigate to home page (Interesting)
   setTimeout(() => {
     router.push('/');
   }, 5000);
