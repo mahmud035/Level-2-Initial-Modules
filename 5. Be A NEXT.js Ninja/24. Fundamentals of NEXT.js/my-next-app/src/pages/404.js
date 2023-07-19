@@ -1,7 +1,17 @@
+import { Button } from 'antd';
 import Image from 'next/image';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
 import React from 'react';
 
 const ErrorPage = () => {
+  const router = useRouter();
+
+  // NOTE: Dynamically navigate to home page
+  setTimeout(() => {
+    router.push('/');
+  }, 5000);
+
   return (
     <div>
       <Image
@@ -13,6 +23,10 @@ const ErrorPage = () => {
           objectFit: 'cover',
         }}
       ></Image>
+
+      <Button type="primary">
+        <Link href="/">Back to Home</Link>
+      </Button>
     </div>
   );
 };
