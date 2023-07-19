@@ -3,7 +3,7 @@ import React from 'react';
 
 const ProductDetails = () => {
   const router = useRouter();
-  const slug = router.query.slug;
+
   console.log(router.query.slug);
 
   return (
