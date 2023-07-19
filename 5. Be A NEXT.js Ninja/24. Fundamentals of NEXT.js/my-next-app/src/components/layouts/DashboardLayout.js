@@ -77,6 +77,7 @@ const DashboardLayout = ({ children }) => {
             <Breadcrumb.Item>User</Breadcrumb.Item>
             <Breadcrumb.Item>Bill</Breadcrumb.Item>
           </Breadcrumb>
+          {/* Content goes here */}
           <div
             style={{
               padding: 24,

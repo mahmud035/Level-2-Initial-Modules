@@ -48,6 +48,7 @@ const RootLayout = ({ children }) => {
           <Breadcrumb.Item>List</Breadcrumb.Item>
           <Breadcrumb.Item>App</Breadcrumb.Item>
         </Breadcrumb>
+        {/* Content goes here */}
         <div
           className="site-layout-content"
           style={{
