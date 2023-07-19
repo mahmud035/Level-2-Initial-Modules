@@ -1,14 +1,15 @@
 import RootLayout from '@/components/layouts/RootLayout';
 
-const HomePage = () => {
+const AboutPage = () => {
   return (
     <div>
-      <h1>Home Page</h1>
+      <h1>About Page</h1>
     </div>
   );
 };
-export default HomePage;
 
-HomePage.getLayout = function getLayout(page) {
+export default AboutPage;
+
+AboutPage.getLayout = function getLayout(page) {
   return <RootLayout>{page}</RootLayout>;
 };
