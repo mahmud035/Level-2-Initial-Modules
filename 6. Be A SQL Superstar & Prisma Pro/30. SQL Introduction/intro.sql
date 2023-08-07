@@ -23,3 +23,13 @@
 -- ALTER TABLE student RENAME TO new_student;
 
 -- DROP TABLE IF EXISTS new_student;
+
+-- ## 30-8: Adding Constraints In A Table
+
+CREATE TABLE
+    IF NOT EXISTS users (
+        user_id SERIAL PRIMARY KEY,
+        user_name VARCHAR(255) UNIQUE NOT NULL,
+        email VARCHAR(255) UNIQUE NOT NULL,
+        age INT DEFAULT 18
+    );
