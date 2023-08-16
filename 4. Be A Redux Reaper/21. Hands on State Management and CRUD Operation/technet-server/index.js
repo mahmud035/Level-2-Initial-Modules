@@ -1,6 +1,5 @@
 require('dotenv').config();
 const express = require('express');
-const morgan = require('morgan');
 const { MongoClient, ServerApiVersion, ObjectId } = require('mongodb');
 const app = express();
 const port = process.env.PORT || 5000;
@@ -9,14 +8,9 @@ const cors = require('cors');
 
 app.use(cors());
 app.use(express.json());
-app.use(morgan('dev'));
-
-// const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.euxm4cs.mongodb.net/?retryWrites=true&w=majority`;
 
 const uri =
   'mongodb+srv://tech-net:b0HYTeJ712WsaqfR@cluster0.yeflywl.mongodb.net/?retryWrites=true&w=majority';
-
-console.log(uri);
 
 const client = new MongoClient(uri, {
   useNewUrlParser: true,
@@ -82,6 +76,41 @@ const run = async () => {
 
       console.log('Comment added successfully');
       res.json({ message: 'Comment added successfully' });
+    });
+
+    app.get('/comment/:id', async (req, res) => {
+      const productId = req.params.id;
+
+      const result = await productCollection.findOne(
+        { _id: ObjectId(productId) },
+        { projection: { _id: 0, comments: 1 } }
+      );
+
+      if (result) {
+        res.json(result);
+      } else {
+        res.status(404).json({ error: 'Product not found' });
+      }
+    });
+
+    app.post('/user', async (req, res) => {
+      const user = req.body;
+
+      const result = await userCollection.insertOne(user);
+
+      res.send(result);
+    });
+
+    app.get('/user/:email', async (req, res) => {
+      const email = req.params.email;
+
+      const result = await userCollection.findOne({ email });
+
+      if (result?.email) {
+        return res.send({ status: true, data: result });
+      }
+
+      res.send({ status: false });
     });
   } finally {
   }
