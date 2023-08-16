@@ -1,5 +1,7 @@
 -- CREATE DATABASE test2;
 
+--* 31-1: Foreign Key Constraint And Data Integrity
+
 --* Department Table
 -- Each department has many employees.
 CREATE TABLE
@@ -100,3 +102,5 @@ DELETE FROM courses
 WHERE course_id = 1;
 
 SELECT * FROM courses;
+
+
