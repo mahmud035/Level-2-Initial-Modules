@@ -122,3 +122,28 @@ SELECT *
 FROM employees 
 INNER JOIN departments ON employees.deptId = departments.deptId;
 
+--* 31-7 More Joining
+-- Left Join / Left Outer Join
+SELECT *
+FROM employees
+LEFT JOIN departments ON employees.deptId = departments.deptId;
+
+-- Right Join / Right Outer Join
+SELECT *
+FROM employees
+RIGHT JOIN departments ON employees.deptId = departments.deptId;
+
+-- Full Join
+SELECT *
+FROM employees
+FULL JOIN departments ON employees.deptId = departments.deptId;
+
+-- Natural Join
+SELECT *
+FROM employees
+NATURAL JOIN departments;
+
+-- Cross Join
+SELECT *
+FROM employees
+CROSS JOIN departments;
