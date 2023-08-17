@@ -147,3 +147,33 @@ NATURAL JOIN departments;
 SELECT *
 FROM employees
 CROSS JOIN departments;
+
+--* 31-8 Aggregate Functions
+SELECT * FROM departments;
+SELECT * from employees;
+
+SELECT AVG(salary) AS average_salary FROM employees;
+SELECT MIN(salary) AS minimum_salary FROM employees;
+SELECT MAX(salary) AS maximum_salary FROM employees;
+SELECT SUM(salary) AS total_salary FROM employees;
+
+SELECT deptId, AVG(salary) FROM employees GROUP BY deptId;
+SELECT deptId, SUM(salary) FROM employees GROUP BY deptId;
+
+-- NOTE: Interesting
+SELECT d.name, AVG(e.salary), SUM(e.salary), COUNT(*)
+FROM employees e
+FULL JOIN departments d ON e.deptId = d.deptId
+GROUP BY d.name;
+
+-- Same as above
+SELECT d.name, AVG(e.salary), SUM(e.salary), COUNT(*) 
+FROM departments d
+FULL JOIN employees e ON e.deptId = d.deptId
+GROUP BY d.deptId;
+
+-- Filtering using HAVING
+SELECT d.name, AVG(e.salary), SUM(e.salary), COUNT(*)
+FROM employees e
+FULL JOIN departments d ON e.deptId = d.deptId
+GROUP BY d.name HAVING AVG(salary) > 50000;
