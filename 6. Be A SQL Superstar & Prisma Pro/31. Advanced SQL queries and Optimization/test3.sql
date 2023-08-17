@@ -93,7 +93,7 @@ WHERE empID NOT IN (2, 5, 7);
 SELECT * FROM employees
 WHERE salary BETWEEN 10000 AND 15000;
 
--- LIKE (for searching)
+-- LIKE (for searching / partial matching)
 SELECT * FROM employees
 WHERE name LIKE 'E%';   -- First character will be E (name column)
 
@@ -112,3 +112,13 @@ WHERE name LIKE '_m___y%';
 
 SELECT * FROM employees 
 WHERE deptId IS NULL;
+
+--* 31-6 Joining
+SELECT * FROM departments;
+SELECT * from employees;
+
+-- Inner Join
+SELECT *
+FROM employees 
+INNER JOIN departments ON employees.deptId = departments.deptId;
+
