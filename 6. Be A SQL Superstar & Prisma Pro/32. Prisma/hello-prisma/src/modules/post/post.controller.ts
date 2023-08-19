@@ -16,8 +16,10 @@ const createPost = async (req: Request, res: Response) => {
 };
 
 const getAllPost = async (req: Request, res: Response) => {
+  console.log(req.query);
   try {
-    const result = await PostService.getAllPost();
+    const options = req.query;
+    const result = await PostService.getAllPost(options);
 
     res.json({
       success: true,
