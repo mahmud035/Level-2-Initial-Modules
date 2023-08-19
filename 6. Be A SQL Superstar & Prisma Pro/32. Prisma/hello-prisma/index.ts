@@ -7,7 +7,7 @@ async function main() {
     data: {
       email: 'fahim@ph.com',
       name: 'fahim',
-      age: 34,
+      role: 'Instructor',
     },
   });
 
