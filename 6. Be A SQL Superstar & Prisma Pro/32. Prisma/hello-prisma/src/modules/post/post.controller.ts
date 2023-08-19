@@ -1,9 +1,9 @@
 import { Request, Response } from 'express';
 import { PostService } from './post.services';
 
-const insertIntoDB = async (req: Request, res: Response) => {
+const createPost = async (req: Request, res: Response) => {
   try {
-    const result = await PostService.insertIntoDB(req.body);
+    const result = await PostService.createPost(req.body);
 
     res.json({
       success: true,
@@ -15,6 +15,21 @@ const insertIntoDB = async (req: Request, res: Response) => {
   }
 };
 
+const getAllPost = async (req: Request, res: Response) => {
+  try {
+    const result = await PostService.getAllPost();
+
+    res.json({
+      success: true,
+      message: 'Retrieved all post successfully',
+      data: result,
+    });
+  } catch (error) {
+    res.send(error);
+  }
+};
+
 export const PostController = {
-  insertIntoDB,
+  createPost,
+  getAllPost,
 };
