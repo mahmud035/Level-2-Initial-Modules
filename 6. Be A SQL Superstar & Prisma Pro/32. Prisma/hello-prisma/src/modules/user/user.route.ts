@@ -3,9 +3,9 @@ import { UserController } from './user.controller';
 
 const router = express.Router();
 
-router.post('/create-user', UserController.insertIntoDB);
+router.post('/create-user', UserController.createUser);
 
-router.post('/profile', UserController.insertOrUpdateProfile);
+router.post('/profile', UserController.createOrUpdateProfile);
 
 router.get('/', UserController.getUsers);
 

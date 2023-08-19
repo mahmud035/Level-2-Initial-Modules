@@ -1,9 +1,9 @@
 import { Request, Response } from 'express';
 import { CategoryService } from './category.services';
 
-const insertIntoDB = async (req: Request, res: Response) => {
+const createCategory = async (req: Request, res: Response) => {
   try {
-    const result = await CategoryService.insertIntoDB(req.body);
+    const result = await CategoryService.createCategory(req.body);
 
     res.json({
       success: true,
@@ -16,5 +16,5 @@ const insertIntoDB = async (req: Request, res: Response) => {
 };
 
 export const CategoryController = {
-  insertIntoDB,
+  createCategory,
 };

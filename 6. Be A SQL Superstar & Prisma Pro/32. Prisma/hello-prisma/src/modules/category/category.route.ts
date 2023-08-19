@@ -3,6 +3,6 @@ import { CategoryController } from './category.controller';
 
 const router = express.Router();
 
-router.post('/create-category', CategoryController.insertIntoDB);
+router.post('/create-category', CategoryController.createCategory);
 
 export const CategoryRoutes = router;

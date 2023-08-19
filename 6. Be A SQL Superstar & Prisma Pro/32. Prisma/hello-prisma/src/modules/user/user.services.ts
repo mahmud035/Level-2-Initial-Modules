@@ -2,7 +2,7 @@ import { PrismaClient, Profile, User } from '@prisma/client';
 
 const prisma = new PrismaClient();
 
-const insertIntoDB = async (data: User): Promise<User> => {
+const createUser = async (data: User): Promise<User> => {
   const result = await prisma.user.create({
     data: data,
   });
@@ -10,7 +10,7 @@ const insertIntoDB = async (data: User): Promise<User> => {
   return result;
 };
 
-const insertOrUpdateProfile = async (data: Profile): Promise<Profile> => {
+const createOrUpdateProfile = async (data: Profile): Promise<Profile> => {
   // check if user's data already exists or not
   const isExist = await prisma.profile.findUnique({
     where: {
@@ -62,8 +62,8 @@ const getSingleUser = async (id: number) => {
 };
 
 export const UserService = {
-  insertIntoDB,
-  insertOrUpdateProfile,
+  createUser,
+  createOrUpdateProfile,
   getUsers,
   getSingleUser,
 };

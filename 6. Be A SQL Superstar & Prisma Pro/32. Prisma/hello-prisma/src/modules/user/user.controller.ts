@@ -1,9 +1,9 @@
 import { Request, Response } from 'express';
 import { UserService } from './user.services';
 
-const insertIntoDB = async (req: Request, res: Response) => {
+const createUser = async (req: Request, res: Response) => {
   try {
-    const result = await UserService.insertIntoDB(req.body);
+    const result = await UserService.createUser(req.body);
 
     res.json({
       success: true,
@@ -15,9 +15,9 @@ const insertIntoDB = async (req: Request, res: Response) => {
   }
 };
 
-const insertOrUpdateProfile = async (req: Request, res: Response) => {
+const createOrUpdateProfile = async (req: Request, res: Response) => {
   try {
-    const result = await UserService.insertOrUpdateProfile(req.body);
+    const result = await UserService.createOrUpdateProfile(req.body);
 
     res.json({
       success: true,
@@ -59,8 +59,8 @@ const getSingleUser = async (req: Request, res: Response) => {
 };
 
 export const UserController = {
-  insertIntoDB,
-  insertOrUpdateProfile,
+  createUser,
+  createOrUpdateProfile,
   getUsers,
   getSingleUser,
 };
