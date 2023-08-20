@@ -45,7 +45,12 @@ const getUsers = async () => {
       profile: true,
     },
   });
+
   return result;
+
+  // Using Raw Queries
+  // const result = await prisma.$queryRaw`select * from users`;
+  // return result;
 };
 
 const getSingleUser = async (id: number) => {
