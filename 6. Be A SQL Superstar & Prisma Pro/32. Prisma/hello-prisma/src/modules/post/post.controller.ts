@@ -24,7 +24,8 @@ const getAllPost = async (req: Request, res: Response) => {
     res.json({
       success: true,
       message: 'Retrieved all post successfully',
-      data: result,
+      total: result.total,
+      data: result.data,
     });
   } catch (error) {
     res.send(error);

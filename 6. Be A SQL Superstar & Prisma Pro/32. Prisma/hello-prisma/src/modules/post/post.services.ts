@@ -20,54 +20,60 @@ const getAllPost = async (options: any) => {
   const skip = parseInt(limit) * parseInt(page) - parseInt(limit) || 0;
   const take = parseInt(limit) || 10;
 
-  const result = await prisma.post.findMany({
-    // Pagination (Interesting)
-    skip: skip,
-    take: take,
+  // NOTE: Transaction (Interesting & Very Easy)
+  return await prisma.$transaction(async (tx) => {
+    const result = await tx.post.findMany({
+      // Pagination (Interesting)
+      skip: skip,
+      take: take,
 
-    // NOTE: Same as Mongoose Populate (Interesting)
-    include: {
-      author: true,
-      category: true,
-    },
-    // Sorting
-    orderBy:
-      sortBy && sortOrder
-        ? {
-            [sortBy]: sortOrder,
-          }
-        : {
-            createdAt: 'desc',
-          },
-    // Filtering
-    where: {
-      OR: [
-        {
-          title: {
-            contains: searchTerm,
-            mode: 'insensitive', // to remove case sensitive
-          },
-        },
-        {
-          author: {
-            name: {
+      // NOTE: Same as Mongoose Populate (Interesting)
+      include: {
+        author: true,
+        category: true,
+      },
+      // Sorting
+      orderBy:
+        sortBy && sortOrder
+          ? {
+              [sortBy]: sortOrder,
+            }
+          : {
+              createdAt: 'desc',
+            },
+      // Filtering
+      where: {
+        OR: [
+          {
+            title: {
               contains: searchTerm,
-              mode: 'insensitive',
+              mode: 'insensitive', // to remove case sensitive
             },
           },
-        },
-        {
-          category: {
-            name: {
-              contains: searchTerm,
-              mode: 'insensitive',
+          {
+            author: {
+              name: {
+                contains: searchTerm,
+                mode: 'insensitive',
+              },
             },
           },
-        },
-      ],
-    },
+          {
+            category: {
+              name: {
+                contains: searchTerm,
+                mode: 'insensitive',
+              },
+            },
+          },
+        ],
+      },
+    });
+
+    const total = await tx.post.count();
+
+    return { data: result, total: total };
   });
-  return result;
 };
 
 const getSinglePost = async (id: number) => {
