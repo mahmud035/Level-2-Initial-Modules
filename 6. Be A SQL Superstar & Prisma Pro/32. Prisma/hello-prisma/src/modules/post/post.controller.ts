@@ -47,8 +47,41 @@ const getSinglePost = async (req: Request, res: Response) => {
   }
 };
 
+const updatePost = async (req: Request, res: Response) => {
+  try {
+    const id = parseInt(req.params.id);
+    const data = req.body;
+    const result = await PostService.updatePost(id, data);
+
+    res.json({
+      success: true,
+      message: 'Post updated successfully',
+      data: result,
+    });
+  } catch (error) {
+    res.send(error);
+  }
+};
+
+const deletePost = async (req: Request, res: Response) => {
+  try {
+    const id = parseInt(req.params.id);
+    const result = await PostService.deletePost(id);
+
+    res.json({
+      success: true,
+      message: 'Post deleted successfully',
+      data: result,
+    });
+  } catch (error) {
+    res.send(error);
+  }
+};
+
 export const PostController = {
   createPost,
   getAllPost,
   getSinglePost,
+  updatePost,
+  deletePost,
 };
