@@ -7,6 +7,8 @@ router.post('/create-post', PostController.createPost);
 
 router.get('/', PostController.getAllPost);
 
+router.get('/learn-query', PostController.learnAggregateAndGrouping);
+
 router.get('/:id', PostController.getSinglePost);
 
 router.patch('/:id', PostController.updatePost);
