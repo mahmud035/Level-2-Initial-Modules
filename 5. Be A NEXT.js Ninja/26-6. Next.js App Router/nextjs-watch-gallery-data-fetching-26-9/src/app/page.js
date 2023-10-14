@@ -1,6 +1,8 @@
 import Products from '@/components/UI/Products';
 
 const HomePage = async () => {
+  // NOTE: Data Fetching
+
   const res = await fetch('http://localhost:5000/watches', {
     cache: 'force-cache',
     next: {
