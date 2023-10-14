@@ -1,3 +1,8 @@
+export const metadata = {
+  title: 'News Page',
+  description: 'This is News Page',
+};
+
 const NewsPage = () => {
   return (
     <div>
