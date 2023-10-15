@@ -34,10 +34,14 @@ app.get('/publish', async (req, res) => {
     message: `message- ${id}`,
   };
 
+  console.log('publish data', data);
+
+  // NOTE: Publish Data
   await publisher.publish('message', JSON.stringify(data));
 
   res.send({
     message: 'Data published!',
+    data,
   });
 });
 
