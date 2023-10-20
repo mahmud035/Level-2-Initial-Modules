@@ -1,0 +1,30 @@
+{
+    "keep": {
+        "days": true,
+        "amount": 14
+    },
+    "auditLog": "C:\\p_Hero_Level_2_Web_Dev\\__Modules__\\7. Be A Front-End Fast Learner\\2. university-management-core-service\\logs\\winston\\successes\\.847715ca9e3c1aa7cbe89c199971771fd84cff49-audit.json",
+    "files": [
+        {
+            "date": 1697455455688,
+            "name": "C:\\p_Hero_Level_2_Web_Dev\\__Modules__\\7. Be A Front-End Fast Learner\\2. university-management-core-service\\logs\\winston\\successes\\phu-2023-16-10-17-success.log",
+            "hash": "3b85fbd0dcaeeb0a5123125226ea89e5ef7a091f866fc2442bc027fd634d3ea8"
+        },
+        {
+            "date": 1697612939165,
+            "name": "C:\\p_Hero_Level_2_Web_Dev\\__Modules__\\7. Be A Front-End Fast Learner\\2. university-management-core-service\\logs\\winston\\successes\\phu-2023-18-10-13-success.log",
+            "hash": "f2ca7ec52684a58cecdc6e972c3e933690292349e9955d5e25b191d8f6946c28"
+        },
+        {
+            "date": 1697711827897,
+            "name": "C:\\p_Hero_Level_2_Web_Dev\\__Modules__\\7. Be A Front-End Fast Learner\\2. university-management-core-service\\logs\\winston\\successes\\phu-2023-19-10-16-success.log",
+            "hash": "c9f28ec697b3d81ac1852e5cd35cc7343f2d54ba93e2955691b7fc193f291d94"
+        },
+        {
+            "date": 1697804690062,
+            "name": "C:\\p_Hero_Level_2_Web_Dev\\__Modules__\\7. Be A Front-End Fast Learner\\2. university-management-core-service\\logs\\winston\\successes\\phu-2023-20-10-18-success.log",
+            "hash": "5758918969ce8e70cc229087c5838a479b82cfac523a0e31bc4817a85e274fd6"
+        }
+    ],
+    "hashType": "sha256"
+}
