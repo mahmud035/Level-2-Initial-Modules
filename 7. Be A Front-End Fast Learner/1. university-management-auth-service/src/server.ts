@@ -7,7 +7,7 @@ import config from './config/index';
 import { errorlogger } from './shared/logger';
 import { RedisClient } from './shared/redis';
 
-process.on('uncaughtException', error => {
+process.on('uncaughtException', (error) => {
   errorlogger.error(error);
   process.exit(1);
 });
@@ -17,9 +17,8 @@ let server: Server;
 async function bootstrap() {
   try {
     await RedisClient.connect().then(() => {
-      subscribeToEvents()
+      subscribeToEvents();
     });
-
 
     await mongoose.connect(config.database_url as string);
     // logger.info(`🛢   Database is connected successfully`);
@@ -33,7 +32,7 @@ async function bootstrap() {
     errorlogger.error('Failed to connect database', err);
   }
 
-  process.on('unhandledRejection', error => {
+  process.on('unhandledRejection', (error) => {
     if (server) {
       server.close(() => {
         errorlogger.error(error);
