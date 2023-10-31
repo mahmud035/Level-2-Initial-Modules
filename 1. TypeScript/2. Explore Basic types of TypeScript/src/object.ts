@@ -1,4 +1,6 @@
-//* Normal way to define type
+// NOTE: Object Type:
+
+//* Normal way to define object type
 const user2: {
   company: 'Programming Hero'; // literal types => types with fixed value
   name: string;
@@ -50,3 +52,31 @@ const user4: User2 = {
 console.log(user2);
 console.log(user3);
 console.log(user4);
+
+// NOTE: Literals Type:
+
+/**
+ * IMPORTANT:
+ * types with fixed value
+ * যদি কোন type এর জন্য value কে fixed করে দেই, তাহলে শুধুমাত্র ঐ value টা ই বা value গুলোই Accept করবে।
+ */
+
+// 1. String Literals
+type Status = 'success' | 'error' | 'pending';
+const statusOfDataFetching: Status = 'success';
+
+// 2. Number Literals
+type EvenNumber = 2 | 4 | 6;
+const num: EvenNumber = 6;
+
+// 3. Boolean Literals
+type YesOrNo = true | false;
+const answer: YesOrNo = true;
+
+// 4. Enum Numbers
+enum Color {
+  Red = 'RED',
+  Green = 'GREEN',
+  Blue = 'BLUE',
+}
+const chosenColor: Color = Color.Green;
