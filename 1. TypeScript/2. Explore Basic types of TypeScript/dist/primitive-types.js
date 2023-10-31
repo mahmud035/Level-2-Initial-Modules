@@ -1,7 +1,14 @@
 "use strict";
-let course = 'Next Level Web Development';
-course = 'Next Level Development';
-// course = 2321;  // Error Here
+// NOTE: Primitive Types:
+/**
+ * string,
+ * number,
+ * boolean,
+ * null,
+ * undefined
+ */
+let course = 'Next Level Web Developer';
 let rollNumber = 123;
-rollNumber = 666;
-const isAdmin = true;
+let isAdmin = true;
+let myName;
+myName = 'Mahmudul Hasan Pavel';

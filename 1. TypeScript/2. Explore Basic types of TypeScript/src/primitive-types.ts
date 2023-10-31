@@ -1,9 +1,14 @@
-let course: string = 'Next Level Web Development';
-
-course = 'Next Level Development';
-// course = 2321;  // Error Here
-
+// NOTE: Primitive Types:
+/**
+ * string,
+ * number,
+ * boolean,
+ * null,
+ * undefined
+ */
+let course: string = 'Next Level Web Developer';
 let rollNumber: number = 123;
-rollNumber = 666;
+let isAdmin: boolean = true;
 
-const isAdmin: boolean = true;
+let myName: string;
+myName = 'Mahmudul Hasan Pavel';
