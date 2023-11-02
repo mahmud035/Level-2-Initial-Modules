@@ -2,7 +2,7 @@
 
 //* Normal way to define object type
 const user2: {
-  company: 'Programming Hero'; // literal types => types with fixed value
+  company: 'Programming Hero'; // IMPORTANT: literal types => types with fixed value
   name: string;
   age: number;
   isMarried: boolean;
