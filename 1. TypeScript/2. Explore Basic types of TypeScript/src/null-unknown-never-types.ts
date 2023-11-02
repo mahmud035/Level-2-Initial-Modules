@@ -36,5 +36,5 @@ function throwError(message: string): never {
   throw new Error(message);
 }
 
-// throwError('Bhai bhai error hoyeche, kandi dimu');
+// throwError('Bhai bhai error hoyeche, kandi dimu ');
 // throwError('Error is mortal');
