@@ -48,7 +48,7 @@ const human1: Human = {
   },
 };
 
-const home = human1.address.home ?? 'No Home';
+const home = human1?.address?.home ?? 'No Home';
 console.log(home); // Output: "No Home"
 
 // Ex-3

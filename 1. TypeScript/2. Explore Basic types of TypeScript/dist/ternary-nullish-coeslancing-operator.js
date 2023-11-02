@@ -1,5 +1,5 @@
 "use strict";
-var _a;
+var _a, _b;
 //* Ternary Operator
 const age = 20;
 // if (age > 18) {
@@ -30,7 +30,7 @@ const human1 = {
         // home: 'Gopalganj',
     },
 };
-const home = (_a = human1.address.home) !== null && _a !== void 0 ? _a : 'No Home';
+const home = (_b = (_a = human1 === null || human1 === void 0 ? void 0 : human1.address) === null || _a === void 0 ? void 0 : _a.home) !== null && _b !== void 0 ? _b : 'No Home';
 console.log(home); // Output: "No Home"
 // Ex-3
 const someValue = null;
