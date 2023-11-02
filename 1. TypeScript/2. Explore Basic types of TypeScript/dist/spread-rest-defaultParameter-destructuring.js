@@ -58,4 +58,15 @@
     const { fullName, city } = myObject;
     console.log(fullName); // 'John Doe'
     console.log(city); // 'New York'
+    const user = {
+        id: 1,
+        name: {
+            firstName: 'Mezbaul',
+            middleName: 'Abedin',
+            lastName: 'Persian',
+        },
+        contactNo: '01700000',
+        address: 'Uganda',
+    };
+    const { name: { middleName }, contactNo, } = user;
 }
