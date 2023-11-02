@@ -37,7 +37,7 @@ function sayHello(name = 'World') {
 const person = {
     name: 'Mezba',
     balance: 5,
-    // addBalance(money: number) {
+    // addBalance(money: number): number {
     //   return this.balance + money;
     // },
     addBalance(money) {
