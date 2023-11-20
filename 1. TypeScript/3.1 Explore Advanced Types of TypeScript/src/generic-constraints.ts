@@ -1,33 +1,43 @@
-/**
- * NOTE: jokhon generic function k force kore bolbo je generic a pathano data te ei ei type er data thakte-ei hobe, othoba ei ei property thakte-ei hobe --> tokhon setake constraints in generic or generic constraints bole.
- * */
+{
+  //* Constraints
+  /**
+   * IMPORTANT:
+   * যখন generic function কে force করে বলবো যে, generic এ পাঠানো data তে এই এই type এর data থাকতেই হবে, অথবা এই এই property থাকতেই হবে --> তখন সেটাকে Constraints in generic or generic constraints বলে।
+   * Constraints কে define করার জন্য "extends keyword" টা ব্যবহার করতে হয়।
+   * Constraints এ মিনিমাম Requirements এর type বা property তো দিতে হবেই + এর সাথে extra type বা property ও দিতে পারবো।
+   */
 
-interface MandatoryInterface {
-  name: string;
-  age: number;
-  salary: number;
+  const addCourseToStudent = <
+    T extends { id: number; name: string; email: string }
+  >(
+    student: T
+  ) => {
+    const course = 'Next Level Web Development';
+
+    return {
+      ...student,
+      course,
+    };
+  };
+
+  const student3 = addCourseToStudent({
+    id: 444,
+    name: 'Mr. Z',
+    email: 'z@gmail.com',
+    emni: 'emni', // Error Here : Because id, name and email property are missing
+  });
+
+  const student1 = addCourseToStudent({
+    id: 222,
+    name: 'Mr. X',
+    email: 'a@gmail.com',
+    devType: 'NLWD',
+  });
+
+  const student2 = addCourseToStudent({
+    id: 333,
+    name: 'Mr. Y',
+    email: 'a@gmail.com',
+    watchType: 'AppleWatch',
+  });
 }
-
-const myInfo2: MandatoryInterface = {
-  name: 'Persian',
-  age: 100,
-  salary: 100000,
-};
-
-const addMeInMyCrushMind2 = <Type extends MandatoryInterface>(myInfo: Type) => {
-  const crush = 'Kate';
-  const newData = { ...myInfo, crush };
-  return newData;
-};
-
-const result9 = addMeInMyCrushMind2<MandatoryInterface>(myInfo2);
-const result11 = addMeInMyCrushMind2<MandatoryInterface>(myInfo2);
-
-console.log(result9);
-console.log(result11);
-
-// WARN
-//  NOT GOOD PRACTICE (karon ami ekhane object er vitore je kono property dite partechi. )
-// const result10 = addMeInMyCrushMind2({ x: '', y: '', z: '' });
-
-// console.log(result10);
