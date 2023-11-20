@@ -1,45 +1,46 @@
-// const rollNumbers3: number[] = [1, 2, 3];
-// const rollNumbers4: string[] = ['1', '2', '3'];
+{
+  //* Generic Type
 
-// Ex: 1 (generic array)
-type GenericArray<Type> = Array<Type>;
+  type GenericArray<T> = Array<T>;
 
-const rollNumbers3: GenericArray<number> = [1, 2, 3];
-const rollNumbers4: GenericArray<string> = ['1', '2', '3'];
+  // const rollNumbers: number[] = [1, 2, 3];
+  // const rollNumbers: Array<number> = [1, 2, 3];
+  const rollNumbers: GenericArray<number> = [1, 2, 3];
 
-type NameRollType = { name: string; roll: number };
+  // const mentors: string[] = ['Mr. X', 'Mr. Y', 'Mr. Z'];
+  // const mentors: Array<string> = ['Mr. X', 'Mr. Y', 'Mr. Z'];
+  const mentors: GenericArray<string> = ['Mr. X', 'Mr. Y', 'Mr. Z'];
 
-const userNameAndRollNumbers: GenericArray<NameRollType> = [
-  { name: 'John', roll: 1 },
-  { name: 'Alex', roll: 2 },
-];
+  // const boolArray: boolean[] = [true, false, true];
+  // const boolArray: Array<boolean> = [true, false, true];
+  const boolArray: GenericArray<boolean> = [true, false, true];
 
-// Ex: 2 (generic tuple)
-type GenericTuple<X, Y> = [X, Y];
+  type User = {
+    name: string;
+    age: number;
+  };
 
-type RelationWithSalaryType = { name: string; salary: number };
-interface RelationWithSalaryInterface {
-  name: string;
-  salary: number;
+  const user: GenericArray<User> = [
+    {
+      name: 'Mezba',
+      age: 100,
+    },
+    {
+      name: 'Jhankar Mahbub',
+      age: 200,
+    },
+  ];
+
+  //* Generic Tuple
+  type GenericTuple<X, Y> = [X, Y];
+
+  const Human: GenericTuple<string, string> = ['Mr. X', 'Mrs. Y'];
+
+  const UserWithID: GenericTuple<number, { name: string; email: string }> = [
+    123,
+    {
+      name: 'Persian',
+      email: 'a@gmail.com',
+    },
+  ];
 }
-
-const relation: GenericTuple<string, string> = ['John', 'Kate'];
-console.log(relation);
-
-const relationWithSalary: GenericTuple<RelationWithSalaryInterface, string> = [
-  {
-    name: 'John',
-    salary: 100000,
-  },
-  'Kate',
-];
-console.log(relationWithSalary);
-
-const relationWithSalary2: GenericTuple<RelationWithSalaryInterface, string> = [
-  {
-    name: 'John',
-    salary: 100000,
-  },
-  'Kate',
-];
-console.log(relationWithSalary2);
