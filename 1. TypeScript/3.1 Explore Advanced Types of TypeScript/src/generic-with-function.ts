@@ -1,60 +1,67 @@
-//* Ex: 1 Generic Arrow Function
-const createArray = <Type>(param: Type): Type[] => {
-  return [param];
-};
+{
+  //* Function with Generics
 
-interface Name {
-  name: string;
+  // Basic
+  const createArray = (param: string): string[] => {
+    return [param];
+  };
+
+  const res = createArray('Bangladesh');
+
+  // Ex: 1 (Array)
+  const createArrayWithGeneric = <T>(param: T): T[] => {
+    return [param];
+  };
+
+  const resGeneric = createArrayWithGeneric<boolean>(true); // will return boolean[]
+  const resGeneric2 = createArrayWithGeneric<string>('Bangladesh'); // will return string[]
+
+  type User = {
+    id: number;
+    name: string;
+  };
+
+  const resGenericObj = createArrayWithGeneric<User>({
+    id: 222,
+    name: 'Mr. X',
+  }); // will return User[]
+
+  // Ex: 2 (Tuple)
+  const createArrayWithTuple = <T, Q>(param1: T, param2: Q): [T, Q] => {
+    return [param1, param2];
+  };
+
+  const res1 = createArrayWithTuple<string, number>('Bangladesh', 222); // will return [string, number]
+  const res2 = createArrayWithTuple<string, string>('Dhaka', 'Khulna'); // will return [string, string]
+
+  // IMPORTANT: Ex: 3
+  const addCourseToStudent = <T>(student: T) => {
+    const course = 'Next Level Web Development';
+
+    return {
+      ...student,
+      course,
+    };
+  };
+
+  type IStudent = {
+    name: string;
+    email: string;
+    devType?: string;
+    watchType?: string;
+  };
+
+  const student1 = addCourseToStudent<IStudent>({
+    name: 'Mr. X',
+    email: 'a@gmail.com',
+    devType: 'NLWD',
+  });
+
+  const student2 = addCourseToStudent<IStudent>({
+    name: 'Mr. Y',
+    email: 'a@gmail.com',
+    watchType: 'AppleWatch',
+  });
+
+  // console.log(student1, student2);
 }
-
-const result1 = createArray<string>('Bangladesh'); // string[]
-const result2 = createArray<number>(12); // number[]
-const result3 = createArray<boolean>(true); // boolean[]
-const result4 = createArray<Name>({ name: 'John' }); // object[]
-
-console.log(result1);
-console.log(result2);
-console.log(result3);
-console.log(result4);
-
-//* Ex:2 Generic Arrow Function with Tuple return type
-const createArray2 = <X, Y>(param1: X, param2: Y): [X, Y] => {
-  return [param1, param2];
-};
-
-interface Name2 {
-  name: string;
-  age: 28;
-}
-
-type TArray = string[];
-
-const result5 = createArray2<string, number>('John', 100);
-const result6 = createArray2<boolean, Name2>(true, { name: 'John, ', age: 28 });
-const result7 = createArray2<number, TArray>(200, ['John Doe', 'Alex Morgan']);
-
-console.log(result5);
-console.log(result6);
-console.log(result7);
-
-//* Ex:3 Spread Operator with Generic Function
-const crush = 'Kate';
-
-const myInfo = {
-  name: 'Persian',
-  age: 100,
-  salary: 100000,
-};
-
-const newData = { ...myInfo, crush };
-console.log(newData);
-
-// Same kaj with Function
-const addMeInMyCrushMind = <Type>(myInfo: Type) => {
-  const crush = 'Kate';
-  const newData = { ...myInfo, crush };
-  return newData;
-};
-
-const result8 = addMeInMyCrushMind(myInfo);
-console.log(result8);
