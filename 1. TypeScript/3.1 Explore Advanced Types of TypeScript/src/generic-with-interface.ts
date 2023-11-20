@@ -1,61 +1,66 @@
-/**
- * Generic in Interface
- *
- * NOTE: ekta "interface" define korbo jar moddhe kichu property er type thakbe 'fixed' abong kichu property er type thakbe 'DYNAMIC'
- *  */
+{
+  /**
+   * IMPORTANT:
+   *
+   * NOTE: একটা "interface" define করবো যার মধ্যে কিছু property এর type থাকবে 'fixed type' এবং কিছু property এর type থাকবে 'Dynamic type'
+   */
 
-// Ex: 1 (generic interface)
-interface CrushInterface<T, U = null> {
-  name: string;
-  husband: T;
-  wife?: U;
+  //* Generic with interface
+
+  interface IDeveloper<T, U = null> {
+    name: string;
+    computer: {
+      brand: string;
+      model: string;
+      releaseYear: number;
+    };
+    smartWatch: T;
+    bike?: U;
+  }
+
+  type ISmartWatch = {
+    brand: string;
+    model: string;
+    display?: string;
+    heartTrack?: boolean;
+    sleepTrack?: boolean;
+  };
+
+  type IBike = {
+    model: string;
+    engineCapacity: string;
+  };
+
+  const poorDeveloper: IDeveloper<ISmartWatch> = {
+    name: 'Persian',
+    computer: {
+      brand: 'Asus',
+      model: 'X556UQ',
+      releaseYear: 2016,
+    },
+    smartWatch: {
+      brand: 'Emilab',
+      model: 'kw66',
+      display: 'Amoled',
+    },
+  };
+
+  const richDeveloper: IDeveloper<ISmartWatch, IBike> = {
+    name: 'Rich Dev',
+    computer: {
+      brand: 'HP',
+      model: 'X-25UR',
+      releaseYear: 2022,
+    },
+    smartWatch: {
+      brand: 'Apple Watch',
+      model: 'Something',
+      heartTrack: true,
+      sleepTrack: true,
+    },
+    bike: {
+      model: 'Yamaha',
+      engineCapacity: '250cc',
+    },
+  };
 }
-
-const crush1: CrushInterface<boolean, string> = {
-  name: 'Kate',
-  husband: true,
-  wife: 'Chokina',
-};
-console.log(crush1);
-
-const crush2: CrushInterface<string> = { name: 'Kate', husband: 'Persian Vai' };
-console.log(crush2);
-
-interface HusbandInterface {
-  name: string;
-  salary: number;
-}
-
-const crush3: CrushInterface<HusbandInterface> = {
-  name: 'Kate',
-  husband: {
-    name: 'Persian Vai',
-    salary: 1000,
-  },
-};
-console.log(crush3);
-
-interface HusbandInterface2 {
-  name: string;
-  age: number;
-  profession: string;
-}
-
-interface WifeInterface {
-  name: string;
-  age: number;
-}
-
-const crush4: CrushInterface<HusbandInterface2, WifeInterface> = {
-  name: 'Kate',
-  husband: {
-    name: 'Persian Vai',
-    age: 32,
-    profession: 'Developer',
-  },
-  wife: {
-    name: 'Chokina',
-    age: 30,
-  },
-};
-console.log(crush4);
