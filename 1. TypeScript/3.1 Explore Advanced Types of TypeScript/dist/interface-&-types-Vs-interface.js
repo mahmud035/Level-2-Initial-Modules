@@ -1,29 +1,17 @@
 "use strict";
 {
-    const userWithTypeAlias = {
-        name: 'Type Alias',
+    const user1 = {
+        name: 'Persian',
         age: 100,
+        role: 'manager',
     };
-    const userWithInterface = {
-        name: 'Interface',
+    const user2 = {
+        name: 'Persian',
         age: 100,
+        role: 'manager',
     };
-    const extendedUserWithInterface = {
-        name: 'Extended Interface',
-        age: 100,
-        roll: 'Admin',
-    };
-    const extendedUserWithTypeAlias = {
-        name: 'Extended Type using Intersection (&)',
-        age: 100,
-        roll: 'Admin',
-    };
-    const addNumbers = (num1, num2) => {
-        return num1 + num2;
-    };
-    const addNumbers2 = (num1, num2) => {
-        return num1 + num2;
-    };
-    const rollNumbers = [1, 2, 3, 4, 5]; // index
-    const rollNumbers2 = [1, 2, 3, 4, 5];
+    const rollNumber1 = [1, 2, 3];
+    const rollNumber2 = [1, 2, 3];
+    const add1 = (num1, num2) => num1 + num2;
+    const add2 = (num1, num2) => num1 + num2;
 }
