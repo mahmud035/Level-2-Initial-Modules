@@ -12,31 +12,31 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     // Asynchronous Typescript (Promises)
     // NOTE: CREATE PROMISE INSIDE A FUNCTION
     // Ex: 1 (return string)
-    const makePromise = () => {
+    const createPromise = () => {
         return new Promise((resolve, reject) => {
             const data = 'Data have fetched';
             if (data) {
                 resolve(data);
             }
             else {
-                reject(`Failed to fetch data`);
+                reject('Failed to fetch data');
             }
         });
     };
     // Ex: 2 (return boolean)
-    const makePromiseBoolean = () => {
+    const createPromiseBoolean = () => {
         return new Promise((resolve, reject) => {
             const data = true;
             if (data) {
                 resolve(data);
             }
             else {
-                reject(`Failed to fetch data`);
+                reject('Failed to fetch data');
             }
         });
     };
     // Ex: 3 (return object)
-    const makePromiseObject = () => {
+    const createPromiseObject = () => {
         return new Promise((resolve, reject) => {
             const data = {
                 name: 'John',
@@ -48,25 +48,25 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
                 resolve(data);
             }
             else {
-                reject(`Failed to fetch data`);
+                reject('Failed to fetch data');
             }
         });
     };
     // NOTE: GET THE PROMISE DATA
     const getPromiseData = () => __awaiter(void 0, void 0, void 0, function* () {
-        const data = yield makePromise();
+        const data = yield createPromise();
         console.log(data);
         return data;
     });
     getPromiseData();
     const getPromiseDataBoolean = () => __awaiter(void 0, void 0, void 0, function* () {
-        const data = yield makePromiseBoolean();
+        const data = yield createPromiseBoolean();
         console.log(data);
         return data;
     });
     getPromiseDataBoolean();
     const getPromiseDataObject = () => __awaiter(void 0, void 0, void 0, function* () {
-        const data = yield makePromiseObject();
+        const data = yield createPromiseObject();
         console.log(data);
         return data;
     });
