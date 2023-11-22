@@ -52,7 +52,7 @@
     //   b: string;
     // };
 
-    // Syntax: Record<Keys, Type>
+    // Syntax:   Record<Keys, Type>
     type MyObj = Record<string, string>;
 
     const obj1: MyObj = {
