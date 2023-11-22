@@ -1,46 +1,35 @@
-// A type is dependent on another type
+{
+  // Conditional type: A type that is depend on another type.
+  /**
+   * IMPORTANT: If a given type 'SomeType' extends another given type 'OtherType', then ConditionalType is TrueType, otherwise it is FalseType
+  
+   * NOTE: Conditional types are defined as follows: 
+   ** type ConditionalType = SomeType extends OtherType ? TrueType : FalseType
+   * 'extends' here means that any value of type 'SomeType' is also of type 'OtherType'.
+   */
 
-// Ex: 1
-type a1 = string;
-type a3 = undefined;
-type a4 = number;
+  // Ex: 1
+  type a1 = number;
+  type b1 = string;
 
-type a2 = a1 extends string ? string : null;
+  type x = a1 extends null ? true : false; // NOTE: Conditional type
 
-// nested conditional type
-type d = a1 extends null
-  ? null
-  : a3 extends number
-  ? number
-  : a4 extends null
-  ? null
-  : never;
+  // Ex: 2 ==> Nested Conditional type
+  type y = a1 extends null ? true : b1 extends undefined ? undefined : any;
 
-// Ex: 2
-type Sheikh = {
-  wife1: string;
-  wife2: string;
-};
+  // Ex: 3
+  type Sheikh = {
+    bike: string;
+    car: string;
+    ship: string;
+  };
 
-type A = keyof Sheikh; // NOTE: output:  'wife1' | 'wife2'
+  // TODO: check korbo ==> car ache ki na / bike ache ki na / ship ache ki na / tractor ache ki na
 
-type CheckProperty<W> = W extends keyof Sheikh ? true : false;
+  type CheckVehicle<T> = T extends keyof Sheikh ? true : false; // NOTE: Here: "keyof Sheikh" ==> 'bike' | 'car' | 'ship'
 
-type CheckWife1 = CheckProperty<'wife1'>; // true
-type CheckWife2 = CheckProperty<'wife2'>; // true
-type CheckWife3 = CheckProperty<'wife3'>; // false
-
-// check korbe ei Sheikh type er wife1 ache ki na ? true : false
-// check korbe ei Sheikh type er wife2 ache ki na ? true : false
-// check korbe ei Sheikh type er wife3 ache ki na ? true : false
-
-// Ex: 3 (Matha kharap Kora Example)
-type Bandhubi = 'Monika' | 'Rachel' | 'Pheobe';
-
-type RemoveBandhubi<T, K> = T extends K ? never : T;
-
-type CurrentBandhubi = RemoveBandhubi<Bandhubi, 'Rachel'>;
-
-/**
- * IMP: union type er moddhe thake kono value er type jodi never hoy, tahole oi value ta union type theke remove hoye jay.
- *  */
+  type HasBike = CheckVehicle<'bike'>; // true
+  type HasCar = CheckVehicle<'car'>; // true
+  type HasShip = CheckVehicle<'ship'>; // true
+  type HasTractor = CheckVehicle<'tractor'>; //! false
+}
