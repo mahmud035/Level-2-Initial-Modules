@@ -11,7 +11,7 @@
     ) {}
 
     getSleep(numOfHours: number) {
-      console.log(`${this.name} will sleep for ${numOfHours} hours`);
+      console.log(`${this.name} will sleep for ${numOfHours}`);
     }
   }
 

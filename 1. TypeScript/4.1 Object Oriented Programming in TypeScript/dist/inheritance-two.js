@@ -10,7 +10,7 @@
             this.address = address;
         }
         getSleep(numOfHours) {
-            console.log(`${this.name} will sleep for ${numOfHours} hours`);
+            console.log(`${this.name} will sleep for ${numOfHours}`);
         }
     }
     //* Child Class
