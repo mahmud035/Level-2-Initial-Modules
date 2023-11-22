@@ -1,64 +1,55 @@
-const arrayOfNumbers = [1, 2, 3];
-const arrayOfStrings = arrayOfNumbers.map((number) => number.toString());
-console.log(arrayOfStrings);
+{
+  // Basic JavaScript 'map'
+  const arrayOfNumbers: number[] = [1, 2, 3];
 
-type AreaNumber = {
-  width: number;
-  height: number;
-};
+  const arrayOfStrings: string[] = arrayOfNumbers.map((number) =>
+    number.toString()
+  );
+  console.log(arrayOfStrings); // ['1', '2', '3']
 
-type AreaString = {
-  width: string;
-  height: string;
-};
+  // Example: 1 (Basic Mapped types)
+  type AreaNumber = {
+    width: number;
+    height: number;
+  };
 
-type AreaReadOnly = {
-  readonly width: number;
-  height: number;
-};
+  // type AreaString = {
+  //   width: string;
+  //   height: string;
+  // };
 
-const rectangularArea: AreaReadOnly = {
-  width: 10,
-  height: 12,
-};
-// rectangularArea.width = 30; // Error Here
+  //* Same task using "Mapped type"
+  // NOTE: Explanation:
+  // key হচ্ছে 'loop variable', যার মান হবে object এর key গুলো। অর্থাৎ, একবার key="width", এবং একবার key="height" হবে।
+  // "keyof AreaNumber" ==> 'width' | 'height'
 
-type B = AreaNumber['width']; // look up types
-type C = keyof AreaNumber; // 'width' | 'height'
+  type AreaString = {
+    [key in keyof AreaNumber]: string; // Index Signature
+  };
 
-// const obj = {
-//   name: 'Persian',
-// };
-// console.log(obj.name);
-// console.log(obj['name']);
+  //* =========================>>===========================>>============================>>
 
-//* Ex: 2 (Mapped type)
-type Volume = {
-  width: number;
-  height: number;
-  depth: number;
-};
+  // IMPORTANT: Example: 2 (Mapped type with Generic & Look Up type) [For Flexibility]
+  /**
+   * NOTE: What is "Look Up type" ?
+   * objectName['width']
+   * objectName['height']
+   */
+  type Width = AreaNumber['width']; // type will be number ==> "Look Up type"
+  type Height = AreaNumber['height']; // type will be number ==> "Look Up type"
 
-type Area = {
-  // [key]: type
-  [key in keyof Volume]: Volume[key];
+  // NOTE: Explanation:
+  // Here: T ==> { width: number; height: string } ==> Full 'Object' টা
+  // key হচ্ছে loop variable, যার মান হবে object এর key গুলো। অর্থাৎ, একবার key="width", এবং একবার key="height" হবে।
+  // "keyof T" ==> 'width' | 'height'
+  // T[key] হচ্ছে "Look Up type" অর্থাৎ, T["width"] & T["height"]
 
-  // Volume['width'] ==> number type; (type dynamically define hobe)
-};
+  type AreaGeneric<T> = {
+    [key in keyof T]: T[key];
+  };
 
-//* create GENERIC mapped type
-
-type AreaGeneric<T> = {
-  [key in keyof T]: T[key];
-};
-
-const name1: AreaGeneric<{ name: string }> = { name: 'Persian' };
-const area1: AreaGeneric<{ width: number; height: number }> = {
-  width: 10,
-  height: 20,
-};
-const volume: AreaGeneric<{ width: string; height: number; depth: string }> = {
-  width: '10',
-  height: 20,
-  depth: '30',
-};
+  const area1: AreaGeneric<{ width: number; height: string }> = {
+    width: 50,
+    height: '100',
+  };
+}
