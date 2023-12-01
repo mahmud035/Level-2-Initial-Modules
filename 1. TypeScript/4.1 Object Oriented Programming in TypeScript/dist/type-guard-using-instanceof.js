@@ -1,31 +1,11 @@
 "use strict";
 {
-    function add(param1, param2) {
-        if (typeof param1 === 'number' && typeof param2 === 'number') {
-            return param1 + param2;
-        }
-        else {
-            return param1.toString() + param2.toString();
-        }
-    }
-    function getUser(user) {
-        if ('role' in user) {
-            return `I am an admin and my role is ${user.role}`;
-        }
-        else {
-            return `I am a normal user`;
-        }
-    }
-    const normalUser1 = { name: 'Mr. X' };
-    const adminUser1 = { name: 'Mr. Y', role: 'admin' };
-    // console.log(getUser(normalUser1));
-    // console.log(getUser(adminUser1));
+    // Type guard / type-narrowing using instanceof
     //* instanceof guard
     /**
      * NOTE: An instance is a real object that we can use which was created from a class.
      */
     class Animal {
-        // parameter properties
         constructor(name, species) {
             this.name = name;
             this.species = species;
@@ -39,7 +19,7 @@
             super(name, species);
         }
         makeBark() {
-            console.log(`I am barking`);
+            console.log('I am barking');
         }
     }
     class Cat extends Animal {
@@ -47,14 +27,15 @@
             super(name, species);
         }
         makeMeaw() {
-            console.log(`I am meawing`);
+            console.log('I am meawing');
         }
     }
     // instanceof ==> Dog
-    const animal1 = new Dog('German Bhai', 'dog');
+    const dog = new Dog('Dog Bhai', 'dog');
     // instanceof ==> Cat
-    const animal2 = new Cat('Persian Bhai', 'cat');
-    function getAnimal(animal) {
+    const cat = new Cat('Cat Bhai', 'cat');
+    //* NOTE: type-guard-using- "instanceof"
+    const getAnimal = (animal) => {
         if (animal instanceof Dog) {
             animal.makeBark();
         }
@@ -64,17 +45,18 @@
         else {
             animal.makeSound();
         }
-    }
-    // getAnimal(animal1);
-    // getAnimal(animal2);
-    //* Using type predicates
-    function isDog(animal) {
+    };
+    getAnimal(dog);
+    getAnimal(cat);
+    //* ===============>>================>>===============>>
+    //* NOTE: Smart way to handle this using function
+    const isDog = (animal) => {
         return animal instanceof Dog;
-    }
-    function isCat(animal) {
+    };
+    const isCat = (animal) => {
         return animal instanceof Cat;
-    }
-    function getAnimal2(animal) {
+    };
+    const getAnimalTwo = (animal) => {
         if (isDog(animal)) {
             animal.makeBark();
         }
@@ -84,7 +66,7 @@
         else {
             animal.makeSound();
         }
-    }
-    getAnimal2(animal1);
-    getAnimal2(animal2);
+    };
+    getAnimalTwo(dog);
+    getAnimalTwo(cat);
 }

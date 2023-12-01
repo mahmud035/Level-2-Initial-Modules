@@ -36,9 +36,10 @@
   //* instanceof guard
   /**
    * NOTE: An instance is a real object that we can use which was created from a class.
-   * */
+   */
 
-  class Animal2 {
+  class Animal {
+    // parameter properties
     constructor(public name: string, public species: string) {}
 
     makeSound() {
@@ -46,7 +47,7 @@
     }
   }
 
-  class Dog extends Animal2 {
+  class Dog extends Animal {
     constructor(name: string, species: string) {
       super(name, species);
     }
@@ -56,7 +57,7 @@
     }
   }
 
-  class Cat extends Animal2 {
+  class Cat extends Animal {
     constructor(name: string, species: string) {
       super(name, species);
     }
@@ -66,13 +67,13 @@
     }
   }
 
-  // instanceof => Dog
+  // instanceof ==> Dog
   const animal1 = new Dog('German Bhai', 'dog');
 
-  // instanceof => Cat
+  // instanceof ==> Cat
   const animal2 = new Cat('Persian Bhai', 'cat');
 
-  function getAnimal(animal: Animal2) {
+  function getAnimal(animal: Animal) {
     if (animal instanceof Dog) {
       animal.makeBark();
     } else if (animal instanceof Cat) {
@@ -87,15 +88,15 @@
 
   //* Using type predicates
 
-  function isDog(animal: Animal2): animal is Dog {
+  function isDog(animal: Animal): animal is Dog {
     return animal instanceof Dog;
   }
 
-  function isCat(animal: Animal2): animal is Cat {
+  function isCat(animal: Animal): animal is Cat {
     return animal instanceof Cat;
   }
 
-  function getAnimal2(animal: Animal2) {
+  function getAnimal2(animal: Animal) {
     if (isDog(animal)) {
       animal.makeBark();
     } else if (isCat(animal)) {

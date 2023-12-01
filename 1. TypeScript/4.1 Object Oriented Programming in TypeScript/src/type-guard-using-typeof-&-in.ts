@@ -17,7 +17,7 @@
   console.log(add('2', '3')); // 23
 
   //* in guard
-  // NOTE: in guard only works for object.
+  // IMPORTANT: "in guard" only works for "object".
 
   type NormalUser = { name: string };
   type AdminUser = { name: string; role: 'admin' };
