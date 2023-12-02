@@ -70,7 +70,7 @@
     }
   }
 
-  //* Create 'instance / object Using Car Class
+  //* Create 'instance / object' Using Car Class
   const car1 = new Car('Car Name', 'Toyota', 2000);
   console.log(car1);
 

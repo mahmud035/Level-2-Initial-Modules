@@ -1,6 +1,13 @@
 "use strict";
 {
-    //* Access Modifiers (public, private, protected)
+    //* Encapsulation in OOP
+    /**
+     * Encapsulation: Keep properties and methods private inside the Class, so they are not accessible from outside the Class. Some methods can be exposed as a public interface (API).
+     *
+     * NOTE: Why we need Encapsulation?
+     * Prevents external code from accidentally manipulating internal properties / state.
+     * Allows to change internal implementation without the risk of breaking external code.
+     */
     /**
      * IMPORTANT:
      * Access Modifier: Class এর বিভিন্ন property এবং method এর access কে নিয়ন্ত্রন করে।
