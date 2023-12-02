@@ -1,79 +1,99 @@
-//  Ex: 1
+{
+  //* Polymorphism in OOP
 
-//* Parent Class
-class Person2 {
-  takeNap(): void {
-    console.log(`I am sleeping 8 hours per day`);
-  }
-}
+  /**
+   * NOTE: Poly শব্দের অর্থ —> “অনেকগুলো” এবং Morphism শব্দের অর্থ —> “রুপ”। অর্থাৎ Polymorphism শব্দের অর্থ হলো —> “যার অনেকগুলো রুপ”।
+   *
+   * IMPORTANT: যখন একটা Parent Class এর কোন একটা method বিভিন্ন Child Class এর মধ্যে extends হয়ে ভিন্ন ভিন্ন কাজ করে (অর্থাৎ, Child Class এর মধ্যে Parent Class থেকে পাওয়া ঐ method কে বিভিন্ন ভাবে পরিবর্তন করা যায় এবং এই পরিবর্তন করাটা প্রতিটি Child Class এর মধ্যে আলাদা আলাদা ভাবে কাজ করে) ==> তখন এই বিষয়টিকে Polymorphism বলে।
+   *
+   ** In Short: A Child Class can overwrite a method it inherited from a Parent Class.
+   */
 
-//* Child Class
-class Student2 extends Person2 {
-  // modify parent class method
-  takeNap(): void {
-    console.log(`I am sleeping 10 hours per day`);
-  }
-}
-
-//* Child Class
-class Developer extends Person2 {
-  // modify parent class method
-  takeNap(): void {
-    console.log(`I am sleeping 5 hours per day`);
-  }
-}
-
-function getNap(param: Person2) {
-  param.takeNap();
-}
-
-const person1 = new Person2();
-const person2 = new Student2();
-const person3 = new Developer();
-
-getNap(person1);
-getNap(person2);
-getNap(person3);
-
-// Ex: 2
-
-//* Parent Class
-class Shape {
-  getArea(): number {
-    return 0;
-  }
-}
-
-//* Child Class
-class Circle extends Shape {
-  constructor(public radius: number) {
-    super();
+  //  Ex: 1
+  //* Parent Class
+  class Person {
+    getSleep() {
+      console.log(`I am sleeping for 8 hours per day`);
+    }
   }
 
-  // modify parent class method
-  getArea(): number {
-    return Math.PI * this.radius * this.radius;
-  }
-}
-
-//* Child Class
-class Rectangle extends Shape {
-  constructor(public width: number, public height: number) {
-    super();
+  //* Child Class: 01
+  class Student extends Person {
+    getSleep() {
+      console.log(`I am sleeping for 7 hours per day`);
+    }
   }
 
-  // modify parent class method
-  getArea(): number {
-    return this.width * this.height;
+  //* Child Class: 02
+  class Developer extends Person {
+    getSleep(): void {
+      console.log(`I am sleeping for 6 hours per day`);
+    }
   }
+
+  //* Create 'instance/object' from Classes
+  const person1 = new Person();
+  const person2 = new Student();
+  const person3 = new Developer();
+
+  const getSleepingHours = (param: Person) => {
+    param.getSleep();
+  };
+
+  getSleepingHours(person1); // I am sleeping for 8 hours per day
+  getSleepingHours(person2); // I am sleeping for 7 hours per day
+  getSleepingHours(person3); // I am sleeping for 6 hours per day
+
+  //* =================>>==================>>==================>>
+
+  // Ex: 2
+  //* Parent Class
+  class Shape {
+    getArea(): number {
+      return 0;
+    }
+  }
+
+  //* Child Class: 01
+  class Circle extends Shape {
+    radius: number;
+    constructor(radius: number) {
+      super();
+      this.radius = radius;
+    }
+
+    // NOTE: Modify Parent Class Method inside Child Class
+    getArea(): number {
+      return Math.PI * this.radius * this.radius; // CircleArea = 3.14 * radius * radius
+    }
+  }
+
+  //* Child Class: 02
+  class Rectangle extends Shape {
+    width: number;
+    height: number;
+    constructor(width: number, height: number) {
+      super();
+      this.width = width;
+      this.height = height;
+    }
+
+    // NOTE: Modify Parent Class Method inside Child Class
+    getArea(): number {
+      return this.width * this.height; // RectangleArea = width * height
+    }
+  }
+
+  //* Create 'instance/object' from Classes
+  const shape = new Shape();
+  const circleShape = new Circle(10);
+  const rectangleShape = new Rectangle(5, 10);
+
+  const getShapeArea = (param: Shape) => {
+    console.log(param.getArea());
+  };
+
+  getShapeArea(shape); // 0
+  getShapeArea(circleShape); // 314.1592653589793
+  getShapeArea(rectangleShape); // 50
 }
-
-function getAreaOfShape(param: Shape) {
-  console.log(param.getArea());
-}
-
-const circle1 = new Circle(10);
-const rectangle1 = new Rectangle(10, 20);
-
-getAreaOfShape(circle1);
-getAreaOfShape(rectangle1);
