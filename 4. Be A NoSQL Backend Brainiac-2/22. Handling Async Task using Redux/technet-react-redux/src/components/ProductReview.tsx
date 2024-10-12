@@ -10,7 +10,7 @@ import { Button } from './ui/button';
 import { Textarea } from './ui/textarea';
 
 interface IProps {
-  id: string;
+  readonly id: string;
 }
 
 export default function ProductReview({ id }: IProps) {
@@ -55,8 +55,8 @@ export default function ProductReview({ id }: IProps) {
   };
 
   return (
-    <div className="max-w-7xl mx-auto mt-5">
-      <form className="flex gap-5 items-center" onSubmit={handleSubmit}>
+    <div className="mx-auto mt-5 max-w-7xl">
+      <form className="flex items-center gap-5" onSubmit={handleSubmit}>
         <Textarea
           className="min-h-[30px]"
           onChange={handleChange}
@@ -70,8 +70,8 @@ export default function ProductReview({ id }: IProps) {
         </Button>
       </form>
       <div className="mt-10">
-        {data?.map((comment: string, index: number) => (
-          <div key={index} className="flex gap-3 items-center mb-5">
+        {data?.map((comment: string) => (
+          <div key={comment} className="flex items-center gap-3 mb-5">
             <Avatar>
               <AvatarImage src="https://github.com/shadcn.png" />
               <AvatarFallback>CN</AvatarFallback>

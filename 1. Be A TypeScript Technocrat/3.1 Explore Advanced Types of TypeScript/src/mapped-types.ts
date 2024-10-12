@@ -52,4 +52,6 @@
     width: 50,
     height: '100',
   };
+
+  console.log(area1);
 }

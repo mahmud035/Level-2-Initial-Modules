@@ -111,7 +111,8 @@ const run = async () => {
 
       res.send({ status: false });
     });
-  } finally {
+  } catch (error) {
+    console.error(error.message);
   }
 };
 

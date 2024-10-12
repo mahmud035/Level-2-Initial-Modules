@@ -1,18 +1,14 @@
 // A type is dependent on another type
 
 // Ex: 1
-type a1 = string;
-type a3 = undefined;
-type a4 = number;
+type a2 = string extends string ? string : null; // Directly use 'string'
 
-type a2 = a1 extends string ? string : null;
-
-// nested conditional type
-type d = a1 extends null
+// Nested conditional type
+type d = string extends null
   ? null
-  : a3 extends number
+  : undefined extends number
   ? number
-  : a4 extends null
+  : number extends null
   ? null
   : never;
 

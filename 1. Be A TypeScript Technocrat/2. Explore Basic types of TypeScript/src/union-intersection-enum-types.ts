@@ -4,12 +4,6 @@
     name: string;
   };
 
-  // type JuniorDeveloper = {
-  //   name: string;
-  //   expertise: string;
-  //   experience: number;
-  // };
-
   type JuniorDeveloper = NoobDeveloper & {
     expertise: string;
     experience: number;
@@ -34,6 +28,8 @@
     level: 'junior',
   };
 
+  console.log({ newDeveloper, seniorDeveloper });
+
   // =======================
   // =======================
 
@@ -43,6 +39,8 @@
   myVar = 42; // Valid, as it's a number
   myVar = 'Hello'; // Valid, as it's a string
   // myVar = true;  // Invalid, as it's not a number or a string
+
+  console.log({ myVar });
 
   // Function parameter with a union type
   function printValue(value: number | string) {
@@ -85,6 +83,8 @@
     jobTitle: 'Developer',
   };
 
+  console.log({ john });
+
   //* Enum Types
   enum Level {
     junior = 'junior',
@@ -97,10 +97,5 @@
     Down = 'DOWN',
     Left = 'LEFT',
     Right = 'RIGHT',
-  }
-
-  enum BooleanLikeHeterogeneousEnum {
-    No = 0,
-    Yes = 'YES',
   }
 }

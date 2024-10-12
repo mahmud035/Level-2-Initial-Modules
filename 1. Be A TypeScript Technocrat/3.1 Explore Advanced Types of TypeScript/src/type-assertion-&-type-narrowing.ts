@@ -1,7 +1,7 @@
 {
   /**
    *  IMPORTANT:
-   * Type assertion: কোন একটা variable এর type কি হবে, সেটা যদি আমি typescript থেকে বেশি sure থাকি তাহলে type-assertion ব্যবহার করবো। type assertion লেখার জন্য as keyword টা ব্যবহার করতে হয়।
+   * Type assertion: কোন একটা variable এর type কি হবে, সেটা যদি আমি typescript থেকে বেশি sure থাকি, তাহলে  type-assertion ব্যবহার করবো। type assertion লেখার জন্য `as` keyword টা ব্যবহার করতে হয়।
    * */
 
   // Example: 1
@@ -10,7 +10,9 @@
 
   anything = 'Next level web development';
 
-  (anything as string).length;
+  const anythingLength = (anything as string).length;
+
+  console.log(anythingLength);
 
   // Example: 2
   const kgToGram = (param: string | number): string | number | undefined => {
@@ -38,6 +40,14 @@
   };
 
   try {
+    // some code that might throw an error
+    const fetchTodo = async () => {
+      const res = await fetch('https://jsonplaceholder.typicode.com/todos/1');
+      const data = await res.json();
+      return data;
+    };
+
+    fetchTodo();
   } catch (error) {
     // type-assertion
     console.log((error as CustomErrorType).message);

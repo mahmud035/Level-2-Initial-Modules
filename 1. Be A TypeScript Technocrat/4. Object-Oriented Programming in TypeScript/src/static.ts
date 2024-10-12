@@ -2,11 +2,13 @@ class Counter {
   static counter: number = 0;
 
   static increment(): number {
-    return (Counter.counter = Counter.counter + 1);
+    Counter.counter += 1;
+    return Counter.counter;
   }
 
   static decrement(): number {
-    return (Counter.counter = Counter.counter - 1);
+    Counter.counter -= 1;
+    return Counter.counter;
   }
 }
 

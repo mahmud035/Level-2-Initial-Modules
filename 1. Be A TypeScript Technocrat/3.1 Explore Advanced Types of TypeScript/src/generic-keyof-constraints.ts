@@ -20,6 +20,8 @@
   const person1: Owner = 'bike';
   const person2: Owner2 = 'bike';
 
+  console.log({ person1, person2 });
+
   // Ex: 2
   type ExampleType = {
     foo: string;
@@ -66,6 +68,8 @@
   const res5 = getPropertyValue(car, 'model');
   const res6 = getPropertyValue(car, 'year');
   // const res7 = getPropertyValue(car, 'something else') // Error Here
+
+  console.log({ res1, res2, res3, res5, res6 });
 
   //* Accessing Object Property Value
   // user['name'];

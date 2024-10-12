@@ -31,12 +31,6 @@ myTuple = ['Hello', 42, true];
 let firstElement: string = myTuple[0];
 let secondElement: number = myTuple[1];
 
-// Optional Elements
-let optionalTuple: [string, number?];
-optionalTuple = ['Hello']; // Valid
-optionalTuple = ['Hello', 42]; // Valid
-// optionalTuple = [42]; // Error: Type 'number' is not assignable to type 'string'.
-
 // Rest Elements
 let tupleWithRest: [string, ...number[]];
 tupleWithRest = ['Hello', 1, 2, 3]; // Valid

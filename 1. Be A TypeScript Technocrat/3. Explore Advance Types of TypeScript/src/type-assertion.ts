@@ -1,8 +1,6 @@
 let emni: any;
-
 emni = 'Next level web development';
-
-(emni as string).length;
+const emniLength = (emni as string).length;
 
 function kgToGram(param: string | number): string | number | undefined {
   if (typeof param === 'string') {
@@ -24,6 +22,14 @@ type CustomErrorType = {
 };
 
 try {
+  // some code that might throw an error
+  const fetchTodo = async () => {
+    const res = await fetch('https://jsonplaceholder.typicode.com/todos/1');
+    const data = await res.json();
+    return data;
+  };
+
+  fetchTodo();
 } catch (error) {
   console.log((error as CustomErrorType).message);
 }

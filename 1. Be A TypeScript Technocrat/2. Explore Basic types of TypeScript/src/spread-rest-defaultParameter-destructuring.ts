@@ -94,4 +94,6 @@
     name: { middleName },
     contactNo,
   } = user;
+
+  console.log(middleName, contactNo);
 }

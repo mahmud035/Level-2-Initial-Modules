@@ -3,6 +3,8 @@
 
   // NOTE: CREATE PROMISE INSIDE A FUNCTION
 
+  // NOTE: throw an `Error` object in the `reject` call to align with BEST PRACTICES.
+
   // Ex: 1 (return string)
   const makePromise = (): Promise<string> => {
     return new Promise<string>((resolve, reject) => {
@@ -11,7 +13,7 @@
       if (data) {
         resolve(data);
       } else {
-        reject(`Failed to fetch data`);
+        reject(new Error(`Failed to fetch data`));
       }
     });
   };
@@ -24,7 +26,7 @@
       if (data) {
         resolve(data);
       } else {
-        reject(`Failed to fetch data`);
+        reject(new Error(`Failed to fetch data`));
       }
     });
   };
@@ -49,7 +51,7 @@
       if (data) {
         resolve(data);
       } else {
-        reject(`Failed to fetch data`);
+        reject(new Error(`Failed to fetch data`));
       }
     });
   };

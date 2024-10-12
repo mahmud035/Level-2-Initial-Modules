@@ -19,8 +19,9 @@ class Student extends Person {
 }
 
 const student1 = new Student('John', 30, 'Dhaka');
+
 console.log(student1);
-// console.log(student1.makeSleep(7)); // Access Method
+console.log(student1.makeSleep(7)); // Access Method
 
 //* Child Class
 class Teacher extends Person {
@@ -39,6 +40,7 @@ class Teacher extends Person {
 }
 
 const teacher1 = new Teacher('Mr. X', 40, 'Khulna', 'Professor');
+
 console.log(teacher1);
-// console.log(teacher1.makeSleep(6)); // Access Method
-// console.log(teacher1.takeClasses(4)); // Access Method
+console.log(teacher1.makeSleep(6)); // Access Method
+console.log(teacher1.takeClasses(4)); // Access Method

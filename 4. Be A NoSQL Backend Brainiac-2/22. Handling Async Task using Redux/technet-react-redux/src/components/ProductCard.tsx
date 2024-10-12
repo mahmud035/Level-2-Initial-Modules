@@ -1,12 +1,12 @@
-import { IProduct } from '@/types/globalTypes';
-import { toast } from './ui/use-toast';
-import { Button } from './ui/button';
-import { Link } from 'react-router-dom';
-import { useAppDispatch } from '@/redux/hook';
 import { addToCart } from '@/redux/features/cart/cartSlice';
+import { useAppDispatch } from '@/redux/hook';
+import { IProduct } from '@/types/globalTypes';
+import { Link } from 'react-router-dom';
+import { Button } from './ui/button';
+import { toast } from './ui/use-toast';
 
 interface IProps {
-  product: IProduct;
+  readonly product: IProduct;
 }
 
 export default function ProductCard({ product }: IProps) {

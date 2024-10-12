@@ -21,11 +21,11 @@
     address: 'Uganda',
   };
 
-  type CrushMarriedType = boolean;
-  const isCrushMarried: CrushMarriedType = false;
+  const isCrushMarried: boolean = false;
+  const courseName: string = 'Next Level Web Development';
 
-  type CourseNameType = string;
-  const courseName: CourseNameType = 'Next Level Web Development';
+  console.log({ crush1, crush2 });
+  console.log({ isCrushMarried, courseName });
 
   //* 2. Union Type Alias (combining multiple types)
   type Result = number | string;

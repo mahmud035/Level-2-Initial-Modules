@@ -1,4 +1,7 @@
 //* CREATE PROMISE INSIDE FUNCTION
+
+// NOTE: throw an `Error` object in the `reject` call to align with BEST PRACTICES.
+
 // Mocking
 const makePromise = (): Promise<string> => {
   return new Promise<string>((resolve, reject) => {
@@ -7,7 +10,7 @@ const makePromise = (): Promise<string> => {
     if (data) {
       resolve(data);
     } else {
-      reject(`Failed to fetch data`);
+      reject(new Error(`Failed to fetch data`));
     }
   });
 };
@@ -19,7 +22,7 @@ const makePromiseBoolean = (): Promise<boolean> => {
     if (data) {
       resolve(data);
     } else {
-      reject(`Failed to fetch data`);
+      reject(new Error(`Failed to fetch data`));
     }
   });
 };
@@ -43,7 +46,7 @@ const makePromiseObject = (): Promise<DataType> => {
     if (data) {
       resolve(data);
     } else {
-      reject(`Failed to fetch data`);
+      reject(new Error(`Failed to fetch data`));
     }
   });
 };

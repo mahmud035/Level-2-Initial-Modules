@@ -1,10 +1,9 @@
 'use client';
 
-import * as React from 'react';
 import { addDays, format } from 'date-fns';
 import { Calendar as CalendarIcon } from 'lucide-react';
+import * as React from 'react';
 
-import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
 import { Calendar } from '@/components/ui/calendar';
 import {
@@ -19,9 +18,10 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select';
+import { cn } from '@/lib/utils';
 
 interface IProps {
-  disabled?: boolean;
+  readonly disabled?: boolean;
 }
 
 export function DatePickerWithPresets({ disabled }: IProps) {
@@ -38,11 +38,11 @@ export function DatePickerWithPresets({ disabled }: IProps) {
           )}
           disabled={disabled}
         >
-          <CalendarIcon className="mr-2 h-4 w-4" />
+          <CalendarIcon className="w-4 h-4 mr-2" />
           {date ? format(date, 'PPP') : <span>Pick a date</span>}
         </Button>
       </PopoverTrigger>
-      <PopoverContent className="flex w-auto flex-col space-y-2 p-2">
+      <PopoverContent className="flex flex-col w-auto p-2 space-y-2">
         <Select
           onValueChange={(value) =>
             setDate(addDays(new Date(), parseInt(value)))
@@ -58,7 +58,7 @@ export function DatePickerWithPresets({ disabled }: IProps) {
             <SelectItem value="7">In a week</SelectItem>
           </SelectContent>
         </Select>
-        <div className="rounded-md border">
+        <div className="border rounded-md">
           <Calendar mode="single" selected={date} onSelect={setDate} />
         </div>
       </PopoverContent>

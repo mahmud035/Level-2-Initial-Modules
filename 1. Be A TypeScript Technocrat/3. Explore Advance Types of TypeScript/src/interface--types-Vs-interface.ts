@@ -2,7 +2,7 @@
  * NOTE: type use korbo primitive type data er jonno(Ex: string, number, boolean, bigInt, symbol etc)
  *
  * NOTE: interface use korbo object type data er jonno(Ex: object, class)
- *  */
+ */
 
 type TUser = {
   name: string;
@@ -49,24 +49,16 @@ const extendedUserWithTypeAlias: TExtendedUser = {
 
 // IMP: FUNCTION define korar khetre type define korar somoy "type" babohar korbo. Karon "type" babohar korle code clean thake.
 
-// "function parameter and return type" using type (Recommended)
-type addNumbersType = (num1: number, num2: number) => number;
+// "function parameter and return type" using function type (RECOMMENDED Way)
+type AddNumbersType = (num1: number, num2: number) => number;
 
-const addNumbers: addNumbersType = (num1, num2) => {
-  return num1 + num2;
-};
-
-// "function parameter and return type" using interface
-interface addNumbersInterface {
-  (num1: number, num2: number): number;
-}
-
-const addNumbers2: addNumbersInterface = (num1, num2) => {
+const addNumbers: AddNumbersType = (num1, num2) => {
   return num1 + num2;
 };
 
 // Array
-// IMP: Array define korar khetre-o type define korar somoy "type" babohar korbo. Karon "type" babohar korle code clean thake.
+// IMPORTANT: Array define korar khetre-o type define korar somoy "type" babohar korbo. Karon "type" babohar korle code clean thake.
+
 type TRollNumbers = number[];
 const rollNumbers: TRollNumbers = [1, 2, 3, 4, 5]; // index
 

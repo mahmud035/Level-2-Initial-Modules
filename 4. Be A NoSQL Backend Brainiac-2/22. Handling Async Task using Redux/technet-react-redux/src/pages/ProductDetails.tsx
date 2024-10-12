@@ -11,7 +11,7 @@ export default function ProductDetails() {
 
   return (
     <>
-      <div className="flex max-w-7xl mx-auto items-center border-b border-gray-300">
+      <div className="flex items-center mx-auto border-b border-gray-300 max-w-7xl">
         <div className="w-[50%]">
           <img src={product?.image} alt="" />
         </div>

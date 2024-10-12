@@ -52,14 +52,10 @@
 
   const rollNumber2: Roll2 = [1, 2, 3];
 
-  //* Using "type With function" (Recommended)
-  type Add1 = (num1: number, num2: number) => number;
+  //* Using "type With function" (Recommended way)
+  type TAddNumber = (num1: number, num2: number) => number;
 
-  const add1: Add1 = (num1, num2) => num1 + num2;
+  const add1: TAddNumber = (num1, num2) => num1 + num2;
 
-  interface Add2 {
-    (num1: number, number: number): number;
-  }
-
-  const add2: Add2 = (num1, num2) => num1 + num2;
+  console.log(add1(5, 10));
 }

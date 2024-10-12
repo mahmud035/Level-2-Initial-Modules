@@ -6,6 +6,7 @@ import { useGetProductsQuery } from '@/redux/api/apiSlice';
 import { useAppDispatch, useAppSelector } from '@/redux/hooks';
 import { setPriceRange, toggleState } from '@/redux/products/productSlice';
 import { IProduct } from '@/types/globalTypes';
+import React from 'react';
 
 export default function Products() {
   const { data, error, isLoading } = useGetProductsQuery(undefined);
@@ -22,9 +23,17 @@ export default function Products() {
     console.log(value);
   };
 
+  // NOTE: Adding `onKeyDown` & `tabIndex` for accessibility.
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      dispatch(toggleState());
+    }
+  };
+
+  //* Decide what to render on UI
   let productsData;
 
-  //* filter product based on status and priceRange
+  // filter product based on `status` and `priceRange`
   if (status) {
     productsData = data?.data?.filter(
       (item: { status: boolean; price: number }) =>
@@ -39,13 +48,17 @@ export default function Products() {
   }
 
   return (
-    <div className="grid grid-cols-12 max-w-7xl mx-auto relative ">
+    <div className="relative grid grid-cols-12 mx-auto max-w-7xl ">
       <div className="col-span-3 z mr-10 space-y-5 border rounded-2xl border-gray-200/80 p-5 self-start sticky top-16 h-[calc(100vh-80px)]">
         <div>
           <h1 className="text-2xl uppercase">Availability</h1>
           <div
             onClick={() => dispatch(toggleState())}
-            className="flex items-center space-x-2 mt-3"
+            onKeyDown={handleKeyDown}
+            tabIndex={0}
+            role="button"
+            aria-pressed="false"
+            className="flex items-center mt-3 space-x-2"
           >
             <Switch id="in-stock" />
             <Label htmlFor="in-stock">In stock</Label>
@@ -65,9 +78,9 @@ export default function Products() {
           <div>From 0$ To {priceRange}$</div>
         </div>
       </div>
-      <div className="col-span-9 grid grid-cols-3 gap-10 pb-20">
+      <div className="grid grid-cols-3 col-span-9 gap-10 pb-20">
         {productsData?.map((product: IProduct) => (
-          <ProductCard product={product} />
+          <ProductCard key={product._id} product={product} />
         ))}
       </div>
     </div>

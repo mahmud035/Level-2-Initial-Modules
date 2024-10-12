@@ -4,11 +4,13 @@
     static count: number = 0;
 
     static increment(): number {
-      return (Counter.count = Counter.count + 1);
+      Counter.count += 1;
+      return Counter.count;
     }
 
-    decrement(): number {
-      return (Counter.count = Counter.count - 1);
+    static decrement(): number {
+      Counter.count -= 1;
+      return Counter.count;
     }
   }
 
@@ -16,6 +18,8 @@
   const instance1 = new Counter();
   const instance2 = new Counter();
   const instance3 = new Counter();
+
+  console.log({ instance1, instance2, instance3 });
 
   console.log(Counter.increment()); // 1 --> same memory address
   console.log(Counter.increment()); // 2 --> same memory address
