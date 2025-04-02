@@ -81,3 +81,48 @@ function handleResponse<T>(res: ApiResponse<T>) {}
 
 handleResponse<{ data: { id: string } }>({ code: 200, data: { id: '1' } }); // ✅
 handleResponse<{ error: 'Bad request' }>({ code: 400, message: 'Bad request' }); // ✅
+
+//* ====================================================
+
+/**
+ * Conditional types allow you to create type relationships that depend on conditions, enabling powerful type transformations and advanced type inference. They're the foundation for many utility types in TypeScript's standard library.
+ */
+
+//* ----------------------------------------
+//* 1. Basic Conditional Types
+//* ----------------------------------------
+
+// ----------------------------------------
+// Syntax
+// ----------------------------------------
+
+// `T extends U ? X : Y`
+
+// If `T` is assignable to `U`, the type is `X`, otherwise `Y`
+
+// ----------------------------------------
+// Simple Example
+// ----------------------------------------
+
+type IsNumber<T> = T extends number ? true : false;
+
+type C = IsNumber<number>; // true
+type D = IsNumber<'hello'>; // false
+
+//* ----------------------------------------
+//* 2. Common Built-in Conditional Types
+//* ----------------------------------------
+
+// ----------------------------------------
+// NonNullable
+// ----------------------------------------
+
+type N = NonNullable<string | null | undefined>; // string
+
+// ----------------------------------------
+// Parameters & ReturnType
+// ----------------------------------------
+
+type FnParams = Parameters<(a: number, b: string) => void>;
+// [a: number, b: string]
+type FnReturn = ReturnType<() => boolean>; // boolean

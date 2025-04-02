@@ -10,7 +10,9 @@ function getValue(obj, key) {
     return obj[key];
 }
 const person = { name: 'Alice', age: 30, location: 'NYC' };
-getValue(person, 'age'); // ✅ OK (returns `number`)
+getValue(person, 'name'); // ✅ OK
+getValue(person, 'age'); // ✅ OK
+getValue(person, 'location'); // ✅ OK
 // Equivalent to: { name?: string; age?: number; location?: string; }
 // 3. Combining with `typeof` for Runtime Objects
 // Extract keys from a concrete object:

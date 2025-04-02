@@ -33,13 +33,13 @@ export {};
 // ----------------------------------------
 
 // 1. Create a Read-Only Version of a Type
-interface IPerson {
+interface Person {
   name: string;
   age: number;
 }
 
 type ReadonlyPerson = {
-  readonly [K in keyof IPerson]: IPerson[K];
+  readonly [K in keyof Person]: Person[K];
 };
 
 /* 
@@ -52,14 +52,14 @@ Result:
 
 // 2. Make All Properties Optional
 type OptionalPerson = {
-  [K in keyof IPerson]?: IPerson[K];
+  [K in keyof Person]?: Person[K];
 };
 
 /* 
 Result:
 {
-  name?: string;
-  age?: number;
+  name?: string | undefined;
+  age?: number | undefined;
 } 
 */
 
@@ -82,7 +82,7 @@ type Flags<T> = {
   [K in keyof T]: boolean;
 };
 
-type PersonFlags = Flags<IPerson>;
+type PersonFlags = Flags<Person>;
 // { name: boolean; age: boolean }
 
 // 2. Add/Remove Modifiers
@@ -105,12 +105,12 @@ type StringProperties<T> = {
   [K in keyof T as T[K] extends string ? K : never]: T[K];
 };
 
-interface IUser {
+interface User {
   id: string;
   age: number;
 }
 
-type UserSettings = StringProperties<IUser>; // { id: string }
+type UserSettings = StringProperties<User>; // { id: string }
 
 // 4. Rename Keys
 // Use template literal types to transform keys:
@@ -119,7 +119,7 @@ type Getters<T> = {
   [K in keyof T as `get${Capitalize<K & string>}`]: () => T[K];
 };
 
-type PersonGetters = Getters<IPerson>;
+type PersonGetters = Getters<Person>;
 /* 
 {
   getName: () => string;
@@ -144,7 +144,7 @@ type ApiResponse<T> = {
   [K in keyof T]: T[K] | null; // Allow null for all properties
 };
 
-type UserResponse = ApiResponse<IUser>;
+type UserResponse = ApiResponse<User>;
 // { id: string | null; age: number | null }
 
 // 3. Derive Types from Configuration Objects

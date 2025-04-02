@@ -6,19 +6,19 @@ export {};
  *
  * It ensures type safety when working with object properties by restricting access to valid keys, preventing typos, and enabling precise type relationships.
  *
- * How It Works
+ * How It Works?
  *
  * Syntax: `keyof T` (where `T` is an object type).
  * Result: A union type of all keys (property names) in `T`.
  */
 
-interface IPerson {
+interface Person {
   name: string;
   age: number;
   location: string;
 }
 
-type PersonKeys = keyof IPerson;
+type PersonKeys = keyof Person;
 // Equivalent to: "name" | "age" | "location"
 
 // ----------------------------------------
@@ -32,15 +32,18 @@ function getValue<T, K extends keyof T>(obj: T, key: K): T[K] {
   return obj[key];
 }
 
-const person: IPerson = { name: 'Alice', age: 30, location: 'NYC' };
-getValue(person, 'age'); // ✅ OK (returns `number`)
+const person: Person = { name: 'Alice', age: 30, location: 'NYC' };
+
+getValue(person, 'name'); // ✅ OK
+getValue(person, 'age'); // ✅ OK
+getValue(person, 'location'); // ✅ OK
 // getValue(person, 'email'); // ❌ Error: "email" is not a key of `Person`
 
 // 2. Mapping or Iterating Over Keys
 // Create types derived from an object’s keys:
 
 type OptionalPerson = {
-  [K in keyof IPerson]?: IPerson[K]; // Make all properties optional
+  [K in keyof Person]?: Person[K]; // Make all properties optional
 };
 // Equivalent to: { name?: string; age?: number; location?: string; }
 
@@ -53,10 +56,10 @@ type ConfigKeys = keyof typeof config; // "theme" | "fontSize"
 // 4. Utility Types (e.g., `Pick`, `Omit`)
 // `keyof` is foundational for built-in utilities:
 
-type PersonNameAndAge = Pick<IPerson, 'name' | 'age'>;
+type PersonNameAndAge = Pick<Person, 'name' | 'age'>;
 // { name: string; age: number; }
 
-type WithoutAge = Omit<IPerson, 'age'>;
+type WithoutAge = Omit<Person, 'age'>;
 // { name: string; location: string; }
 
 // Advanced Example: Type-Safe Event Handlers
